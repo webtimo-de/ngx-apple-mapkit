@@ -325,10 +325,11 @@ class AppleMapsGeocoderService {
         }
         this.geocoder.reverseLookup(new window.mapkit.Coordinate(lat, lon), (err, result) => {
             if (err) {
-                callback(err);
-                return;
+                callback(err, null);
             }
-            callback(null, result);
+            else {
+                callback(null, result);
+            }
         }, options);
     }
     static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsGeocoderService, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }

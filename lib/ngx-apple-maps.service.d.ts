@@ -1,9 +1,8 @@
 import { MapKitInitOptions } from "./declarations";
-import * as mapkit from "mapkitjs-typescript";
 import * as i0 from "@angular/core";
 declare global {
     interface Window {
-        mapkit: mapkit;
+        mapkit: any;
     }
 }
 export declare class NgxAppleMapsService {
