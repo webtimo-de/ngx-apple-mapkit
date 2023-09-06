@@ -5,7 +5,7 @@ declare global {
         mapkit: any;
     }
 }
-export declare class NgxAppleMapsService {
+export declare class AppleMapsService {
     private platformId;
     isBrowser: boolean;
     maps: any[];
@@ -26,6 +26,6 @@ export declare class NgxAppleMapsService {
     optionsChanged(changes: any): void;
     settingsChanged(changes: any, key: any): void;
     setAnnotation(annotation: any, key: any): void;
-    static ɵfac: i0.ɵɵFactoryDeclaration<NgxAppleMapsService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<NgxAppleMapsService>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AppleMapsService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<AppleMapsService>;
 }

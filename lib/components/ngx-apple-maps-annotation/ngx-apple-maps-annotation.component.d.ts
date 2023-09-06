@@ -1,6 +1,6 @@
 import { DoCheck, ElementRef, KeyValueDiffers, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { AnnotationConstructorOptionsInterface } from '../../declarations';
-import { NgxAppleMapsService } from "../../ngx-apple-maps.service";
+import { AppleMapsService } from "../../apple-maps.service";
 import { NgxAppleMapsComponent } from "../ngx-apple-maps/ngx-apple-maps.component";
 import * as i0 from "@angular/core";
 export declare class NgxAppleMapsAnnotationComponent implements OnInit, DoCheck, OnDestroy {
@@ -22,7 +22,7 @@ export declare class NgxAppleMapsAnnotationComponent implements OnInit, DoCheck,
     private annotationElement;
     private calloutEnabled;
     private parentKey;
-    constructor(appleMapsService: NgxAppleMapsService, differs: KeyValueDiffers, ref: ElementRef, renderer: Renderer2, parent: NgxAppleMapsComponent);
+    constructor(appleMapsService: AppleMapsService, differs: KeyValueDiffers, ref: ElementRef, renderer: Renderer2, parent: NgxAppleMapsComponent);
     ngOnInit(): void;
     private initAnnotation;
     private transformOption;

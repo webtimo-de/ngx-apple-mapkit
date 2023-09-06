@@ -3,7 +3,7 @@ import { PLATFORM_ID, Injectable, Inject, EventEmitter, Component, Input, Output
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
 
-class NgxAppleMapsService {
+class AppleMapsService {
     constructor(platformId) {
         this.platformId = platformId;
         this.maps = [];
@@ -72,7 +72,7 @@ class NgxAppleMapsService {
     createMap(element) {
         const options = this.mapsQueue.shift();
         // noinspection TypeScriptValidateJSTypes
-        const index = this.maps.push(new window.mapkit.Map(element, NgxAppleMapsService.settingsLoadedTransform(options.settings)));
+        const index = this.maps.push(new window.mapkit.Map(element, AppleMapsService.settingsLoadedTransform(options.settings)));
         const object = {
             key: index - 1,
             map: this.maps[index - 1],
@@ -302,10 +302,10 @@ class NgxAppleMapsService {
             this.maps[key].addAnnotation(annotation);
         }
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsService, deps: [{ token: PLATFORM_ID }], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsService, providedIn: 'root' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsService, deps: [{ token: PLATFORM_ID }], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsService, providedIn: 'root' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsService, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsService, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'root' }]
         }], ctorParameters: function () { return [{ type: Object, decorators: [{
@@ -455,13 +455,13 @@ class NgxAppleMapsComponent {
     ngAfterViewInit() {
         this.cdr.detectChanges();
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsComponent, deps: [{ token: i0.KeyValueDiffers }, { token: NgxAppleMapsService }, { token: i0.ViewContainerRef }, { token: i0.ChangeDetectorRef }], target: i0.ɵɵFactoryTarget.Component }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsComponent, deps: [{ token: i0.KeyValueDiffers }, { token: AppleMapsService }, { token: i0.ViewContainerRef }, { token: i0.ChangeDetectorRef }], target: i0.ɵɵFactoryTarget.Component }); }
     static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.2.3", type: NgxAppleMapsComponent, selector: "ngx-apple-maps", inputs: { options: "options", settings: "settings", height: "height" }, outputs: { onLoaded: "onLoaded" }, queries: [{ propertyName: "annotations", predicate: ["ngx-apple-maps-annotation"], descendants: true }], ngImport: i0, template: "<div class=\"ngx-apple-maps\">\r\n    <div class=\"ngx-apple-maps__map\"></div>\r\n</div>\r\n<ng-content></ng-content>\r\n<ng-container></ng-container>\r\n", styles: [".ngx-apple-maps{height:100%;position:relative}.ngx-apple-maps .ngx-apple-maps__map{inset:0;position:absolute}\n"] }); }
 }
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsComponent, decorators: [{
             type: Component,
             args: [{ selector: 'ngx-apple-maps', template: "<div class=\"ngx-apple-maps\">\r\n    <div class=\"ngx-apple-maps__map\"></div>\r\n</div>\r\n<ng-content></ng-content>\r\n<ng-container></ng-container>\r\n", styles: [".ngx-apple-maps{height:100%;position:relative}.ngx-apple-maps .ngx-apple-maps__map{inset:0;position:absolute}\n"] }]
-        }], ctorParameters: function () { return [{ type: i0.KeyValueDiffers }, { type: NgxAppleMapsService }, { type: i0.ViewContainerRef }, { type: i0.ChangeDetectorRef }]; }, propDecorators: { options: [{
+        }], ctorParameters: function () { return [{ type: i0.KeyValueDiffers }, { type: AppleMapsService }, { type: i0.ViewContainerRef }, { type: i0.ChangeDetectorRef }]; }, propDecorators: { options: [{
                 type: Input
             }], settings: [{
                 type: Input
@@ -580,13 +580,13 @@ class NgxAppleMapsAnnotationComponent {
     ngOnDestroy() {
         this.appleMapsService.maps[this.parentKey].removeAnnotation(this.annotation);
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsAnnotationComponent, deps: [{ token: NgxAppleMapsService }, { token: i0.KeyValueDiffers }, { token: i0.ElementRef }, { token: i0.Renderer2 }, { token: NgxAppleMapsComponent }], target: i0.ɵɵFactoryTarget.Component }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsAnnotationComponent, deps: [{ token: AppleMapsService }, { token: i0.KeyValueDiffers }, { token: i0.ElementRef }, { token: i0.Renderer2 }, { token: NgxAppleMapsComponent }], target: i0.ɵɵFactoryTarget.Component }); }
     static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.2.3", type: NgxAppleMapsAnnotationComponent, selector: "ngx-apple-maps-annotation", inputs: { options: "options", latitude: "latitude", longitude: "longitude" }, ngImport: i0, template: "<ng-content></ng-content>\n", styles: [".ngx-apple-maps__map-landmark{background:#fff}\n"] }); }
 }
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsAnnotationComponent, decorators: [{
             type: Component,
             args: [{ selector: 'ngx-apple-maps-annotation', template: "<ng-content></ng-content>\n", styles: [".ngx-apple-maps__map-landmark{background:#fff}\n"] }]
-        }], ctorParameters: function () { return [{ type: NgxAppleMapsService }, { type: i0.KeyValueDiffers }, { type: i0.ElementRef }, { type: i0.Renderer2 }, { type: NgxAppleMapsComponent, decorators: [{
+        }], ctorParameters: function () { return [{ type: AppleMapsService }, { type: i0.KeyValueDiffers }, { type: i0.ElementRef }, { type: i0.Renderer2 }, { type: NgxAppleMapsComponent, decorators: [{
                     type: Inject,
                     args: [NgxAppleMapsComponent]
                 }] }]; }, propDecorators: { options: [{
@@ -597,14 +597,14 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImpor
                 type: Input
             }] } });
 
-class NgxAppleMapsModule {
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
-    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsModule, bootstrap: [NgxAppleMapsAnnotationComponent], declarations: [NgxAppleMapsComponent,
+class AppleMapsModule {
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
+    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsModule, bootstrap: [NgxAppleMapsAnnotationComponent], declarations: [NgxAppleMapsComponent,
             NgxAppleMapsAnnotationComponent], imports: [CommonModule], exports: [NgxAppleMapsComponent,
             NgxAppleMapsAnnotationComponent] }); }
-    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsModule, imports: [CommonModule] }); }
+    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsModule, imports: [CommonModule] }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: NgxAppleMapsModule, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: [
@@ -628,5 +628,5 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImpor
  * Generated bundle index. Do not edit.
  */
 
-export { AppleMapsGeocoderService, AppleMapsSearchService, NgxAppleMapsAnnotationComponent, NgxAppleMapsComponent, NgxAppleMapsModule, NgxAppleMapsService };
+export { AppleMapsGeocoderService, AppleMapsModule, AppleMapsSearchService, AppleMapsService, NgxAppleMapsAnnotationComponent, NgxAppleMapsComponent };
 //# sourceMappingURL=ngx-apple-maps.mjs.map

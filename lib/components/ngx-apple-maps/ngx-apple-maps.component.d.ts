@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, DoCheck, EventEmitter, KeyValueDiffers, OnInit, QueryList, ViewContainerRef } from '@angular/core';
 import { MapConstructorOptions, MapKitInitOptions } from "../../declarations";
 import { BehaviorSubject } from "rxjs";
-import { NgxAppleMapsService } from "../../ngx-apple-maps.service";
+import { AppleMapsService } from "../../apple-maps.service";
 import { NgxAppleMapsAnnotationComponent } from "../ngx-apple-maps-annotation/ngx-apple-maps-annotation.component";
 import * as i0 from "@angular/core";
 export declare class NgxAppleMapsComponent implements DoCheck, OnInit, AfterViewInit {
@@ -29,7 +29,7 @@ export declare class NgxAppleMapsComponent implements DoCheck, OnInit, AfterView
     private keyValue;
     keySource: BehaviorSubject<number>;
     key: import("rxjs").Observable<number>;
-    constructor(differs: KeyValueDiffers, appleMapsService: NgxAppleMapsService, viewTemplateRef: ViewContainerRef, cdr: ChangeDetectorRef);
+    constructor(differs: KeyValueDiffers, appleMapsService: AppleMapsService, viewTemplateRef: ViewContainerRef, cdr: ChangeDetectorRef);
     private init;
     private optionsChanged;
     private settingsChanged;
