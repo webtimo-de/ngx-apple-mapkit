@@ -1,28 +1,12 @@
-# NgxAppleMaps
+# Angular 16 Apple Maps (mapkit.js)
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+## ngx-apple-maps
 
-## Code scaffolding
+Info:
+This is a renewed variant of the ngx-apple-maps. This runs on Angular 16 and Ivy. I personally use the library and it is therefore regularly maintained.
 
-Run `ng generate component component-name --project ngx-apple-maps` to generate a new component. You can also
-use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-apple-maps`.
-> Note: Don't forget to add `--project ngx-apple-maps` or else it will be added to the default project in
-> your `angular.json` file.
+---
 
-## Build
+Mehr Informationen findest du im Originalen Projekt:
+https://github.com/ihor-zinchenko/ngx-apple-maps/blob/master/README.md
 
-Run `ng build ngx-apple-maps` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build ngx-apple-maps`, go to the dist folder `cd dist/ngx-apple-maps` and
-run `npm publish`.
-
-## Running unit tests
-
-Run `ng test ngx-apple-maps` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out
-the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
