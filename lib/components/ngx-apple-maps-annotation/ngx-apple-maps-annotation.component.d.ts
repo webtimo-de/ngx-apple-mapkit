@@ -1,0 +1,37 @@
+import { DoCheck, ElementRef, KeyValueDiffers, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { AnnotationConstructorOptionsInterface } from '../../declarations';
+import { NgxAppleMapsService } from "../../ngx-apple-maps.service";
+import { NgxAppleMapsComponent } from "../ngx-apple-maps/ngx-apple-maps.component";
+import * as i0 from "@angular/core";
+export declare class NgxAppleMapsAnnotationComponent implements OnInit, DoCheck, OnDestroy {
+    private appleMapsService;
+    private differs;
+    private ref;
+    private renderer;
+    private parent;
+    options: AnnotationConstructorOptionsInterface;
+    set latitude(value: number);
+    get latitude(): number;
+    set longitude(value: number);
+    get longitude(): number;
+    private _latitude;
+    private _longitude;
+    private _options;
+    private annotation;
+    private landmarkAnnotationCallout;
+    private annotationElement;
+    private calloutEnabled;
+    private parentKey;
+    constructor(appleMapsService: NgxAppleMapsService, differs: KeyValueDiffers, ref: ElementRef, renderer: Renderer2, parent: NgxAppleMapsComponent);
+    ngOnInit(): void;
+    private initAnnotation;
+    private transformOption;
+    private transformOptions;
+    private createAnnotation;
+    private calloutForLandmarkAnnotation;
+    ngDoCheck(): void;
+    private optionsChanged;
+    ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<NgxAppleMapsAnnotationComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<NgxAppleMapsAnnotationComponent, "ngx-apple-maps-annotation", never, { "options": { "alias": "options"; "required": false; }; "latitude": { "alias": "latitude"; "required": false; }; "longitude": { "alias": "longitude"; "required": false; }; }, {}, never, ["*"], false, never>;
+}
