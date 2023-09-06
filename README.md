@@ -7,6 +7,6 @@ This is a renewed variant of the ngx-apple-maps. This runs on Angular 16 and Ivy
 
 ---
 
-Mehr Informationen findest du im Originalen Projekt:
+You can find more information in the original project:
 https://github.com/ihor-zinchenko/ngx-apple-maps/blob/master/README.md
 
