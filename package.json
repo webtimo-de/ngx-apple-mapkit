@@ -9,14 +9,10 @@
     "angular",
     "ngx"
   ],
-  "author": {
-    "email": "npm@web-timo.de",
-    "name": "Timo Köhler",
-    "url": "https://www.web-timo.de/"
-  },
+  "author": "Timo Köhler <npm@web-timo.de> (https://www.web-timo.de/)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/webtimo-de/ngx-apple-mapkit"
+    "url": "git+https://github.com/webtimo-de/ngx-apple-mapkit.git"
   },
   "peerDependencies": {
     "@angular/common": "^16.2.0",
@@ -38,5 +34,17 @@
       "esm": "./esm2022/ngx-apple-mapkit.mjs",
       "default": "./fesm2022/ngx-apple-mapkit.mjs"
     }
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/webtimo-de/ngx-apple-mapkit/issues"
+  },
+  "homepage": "https://github.com/webtimo-de/ngx-apple-mapkit#readme",
+  "main": "index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC"
 }
