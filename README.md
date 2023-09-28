@@ -20,8 +20,8 @@ For generating you need:
 
 ## Map(s) creation
 
-1. Define `options: MapKitInitOptions` in your `*.component.ts` file (have to look on [**MapKitInitOptions
-   **](###mapkitinitoptions))
+1. Define `options: MapKitInitOptions` in your `*.component.ts`
+   file (have to look on [**MapKitInitOptions**](###mapkitinitoptions))
 2. Define `settings: MapConstructorOptions` (optional) (have to loon on MapConstructorOptions)
 3. Add `<ngx-apple-mapkit [options]="options" [settings]="settings"></ngx-apple-mapkit>` in your `*.component.html`
 
@@ -61,12 +61,13 @@ You can provide additional `annotationOptions: AnnotationConstructorOptionsInter
 You can pass elements or component into annotation
 
 ```angular2html
-<ngx-apple-mapkit-annotation 
-    [latitude]="latitude" 
-    [longitude]="longitude"
-    [options]="annotationOptions"
+
+<ngx-apple-mapkit-annotation
+        [latitude]="latitude"
+        [longitude]="longitude"
+        [options]="annotationOptions"
 >
-    <div>Styled div or component with any content</div>
+   <div>Styled div or component with any content</div>
 </ngx-apple-mapkit-annotation>
 ```
 
@@ -75,7 +76,7 @@ You can pass elements or component into annotation
 Description of them https://developer.apple.com/documentation/mapkitjs/mapkit/map
 
 ```typescript
-options:MapKitInitOptions = {
+const options: MapKitInitOptions = {
   language: 'en', // default browser language
   callback: (data) => {
     // return map event
@@ -172,7 +173,7 @@ After successfully initializatin of the map you are got map object with next met
 All options are optional
 
 ```typescript
-settings: MapConstructorOptions = {
+const settings: MapConstructorOptions = {
   region: {
     center: {
       latitude: 37.3316850890998,
@@ -215,7 +216,7 @@ settings: MapConstructorOptions = {
 All params is optional
 
 ```typescript
-annotationOptions: AnnotationConstructorOptionsInterface = {
+const annotationOptions: AnnotationConstructorOptionsInterface = {
    data: { // object with your custom data 
       anyData: "anyValue"
    },
@@ -259,7 +260,7 @@ For using api without map you should initializate API using **AppleMapsService**
 
 ```typescript
 this.appleMapsService.init({
-  JWT: 'YOUR_TOKEN'
+   JWT: 'YOUR_TOKEN'
 });
 ```
 
@@ -281,9 +282,9 @@ this.appleMapsSearchService.initSearch(options);
 
 ```typescript
 this.appleMapsSearchService.search(
-  query, // search query
-  (err, data) => {}, // callback
-  options // SearchInterface
+        query, // search query
+        (err, data) => {}, // callback
+        options // SearchInterface
 );
 ```
 
@@ -291,9 +292,9 @@ this.appleMapsSearchService.search(
 
 ```typescript
 this.appleMapsSearchService.autocomplete(
-  query, // search query
-  (err, data) => {}, // callback
-  options // SearchInterface
+        query, // search query
+        (err, data) => {}, // callback
+        options // SearchInterface
 );
 ```
 
@@ -301,22 +302,22 @@ this.appleMapsSearchService.autocomplete(
 
 ```typescript
 const options = {  // optional
-  getsUserLocation: false, // search near user
-  coordinate: {
-    latitude: number,
-    longitude: number,
-  },
-  language: 'en', // default browser language
-  region: {
-    center: {
+   getsUserLocation: false, // search near user
+   coordinate: {
       latitude: number,
       longitude: number,
-    };
-    span: {
-      from: number,
-      to: number,
-    }
-  }
+   },
+   language: 'en', // default browser language
+   region: {
+      center: {
+         latitude: number,
+         longitude: number,
+      };
+      span: {
+         from: number,
+         to: number,
+      }
+   }
 };
 ```
 
@@ -339,7 +340,7 @@ Methods:
 
 ```typescript
 interface GeocoderReverseLookupOptionsInterface {
- language: string;
+   language: string;
 }
 ```
 
