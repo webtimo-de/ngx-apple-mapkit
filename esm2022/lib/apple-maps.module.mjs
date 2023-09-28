@@ -1,32 +1,30 @@
 import { NgModule } from '@angular/core';
-import { NgxAppleMapkitComponent } from './components/ngx-apple-mapkit/ngx-apple-mapkit.component';
-import { NgxAppleMapkitAnnotationComponent } from './components/ngx-apple-mapkit-annotation/ngx-apple-mapkit-annotation.component';
+import { AppleMapkitComponent } from './apple-mapkit.component';
+import { AppleMapkitAnnotationComponent } from './components/apple-mapkit-annotation/apple-mapkit-annotation.component';
 import { CommonModule } from '@angular/common';
 import * as i0 from "@angular/core";
 export class AppleMapsModule {
     /** @nocollapse */ static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
-    /** @nocollapse */ static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsModule, bootstrap: [NgxAppleMapkitComponent,
-            NgxAppleMapkitAnnotationComponent], declarations: [NgxAppleMapkitComponent,
-            NgxAppleMapkitAnnotationComponent], imports: [CommonModule], exports: [NgxAppleMapkitComponent,
-            NgxAppleMapkitAnnotationComponent] }); }
+    /** @nocollapse */ static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsModule, bootstrap: [AppleMapkitAnnotationComponent], declarations: [AppleMapkitComponent,
+            AppleMapkitAnnotationComponent], imports: [CommonModule], exports: [AppleMapkitComponent,
+            AppleMapkitAnnotationComponent] }); }
     /** @nocollapse */ static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsModule, imports: [CommonModule] }); }
 }
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: AppleMapsModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: [
-                        NgxAppleMapkitComponent,
-                        NgxAppleMapkitAnnotationComponent
+                        AppleMapkitComponent,
+                        AppleMapkitAnnotationComponent
                     ],
                     imports: [CommonModule],
                     exports: [
-                        NgxAppleMapkitComponent,
-                        NgxAppleMapkitAnnotationComponent
+                        AppleMapkitComponent,
+                        AppleMapkitAnnotationComponent
                     ],
                     bootstrap: [
-                        NgxAppleMapkitComponent,
-                        NgxAppleMapkitAnnotationComponent
+                        AppleMapkitAnnotationComponent
                     ]
                 }]
         }] });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwbGUtbWFwcy5tb2R1bGUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9wcm9qZWN0cy9uZ3gtYXBwbGUtbWFwa2l0L3NyYy9saWIvYXBwbGUtbWFwcy5tb2R1bGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFDLFFBQVEsRUFBQyxNQUFNLGVBQWUsQ0FBQztBQUN2QyxPQUFPLEVBQUMsdUJBQXVCLEVBQUMsTUFBTSwwREFBMEQsQ0FBQztBQUNqRyxPQUFPLEVBQ0gsaUNBQWlDLEVBQ3BDLE1BQU0sZ0ZBQWdGLENBQUM7QUFDeEYsT0FBTyxFQUFDLFlBQVksRUFBQyxNQUFNLGlCQUFpQixDQUFDOztBQWtCN0MsTUFBTSxPQUFPLGVBQWU7aUlBQWYsZUFBZTtrSUFBZixlQUFlLGNBSnBCLHVCQUF1QjtZQUN2QixpQ0FBaUMsa0JBVmpDLHVCQUF1QjtZQUN2QixpQ0FBaUMsYUFFM0IsWUFBWSxhQUVsQix1QkFBdUI7WUFDdkIsaUNBQWlDO2tJQU81QixlQUFlLFlBVmQsWUFBWTs7MkZBVWIsZUFBZTtrQkFmM0IsUUFBUTttQkFBQztvQkFDTixZQUFZLEVBQUU7d0JBQ1YsdUJBQXVCO3dCQUN2QixpQ0FBaUM7cUJBQ3BDO29CQUNELE9BQU8sRUFBRSxDQUFDLFlBQVksQ0FBQztvQkFDdkIsT0FBTyxFQUFFO3dCQUNMLHVCQUF1Qjt3QkFDdkIsaUNBQWlDO3FCQUNwQztvQkFDRCxTQUFTLEVBQUU7d0JBQ1AsdUJBQXVCO3dCQUN2QixpQ0FBaUM7cUJBQ3BDO2lCQUNKIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtOZ01vZHVsZX0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQge05neEFwcGxlTWFwa2l0Q29tcG9uZW50fSBmcm9tICcuL2NvbXBvbmVudHMvbmd4LWFwcGxlLW1hcGtpdC9uZ3gtYXBwbGUtbWFwa2l0LmNvbXBvbmVudCc7XG5pbXBvcnQge1xuICAgIE5neEFwcGxlTWFwa2l0QW5ub3RhdGlvbkNvbXBvbmVudFxufSBmcm9tICcuL2NvbXBvbmVudHMvbmd4LWFwcGxlLW1hcGtpdC1hbm5vdGF0aW9uL25neC1hcHBsZS1tYXBraXQtYW5ub3RhdGlvbi5jb21wb25lbnQnO1xuaW1wb3J0IHtDb21tb25Nb2R1bGV9IGZyb20gJ0Bhbmd1bGFyL2NvbW1vbic7XG5cblxuQE5nTW9kdWxlKHtcbiAgICBkZWNsYXJhdGlvbnM6IFtcbiAgICAgICAgTmd4QXBwbGVNYXBraXRDb21wb25lbnQsXG4gICAgICAgIE5neEFwcGxlTWFwa2l0QW5ub3RhdGlvbkNvbXBvbmVudFxuICAgIF0sXG4gICAgaW1wb3J0czogW0NvbW1vbk1vZHVsZV0sXG4gICAgZXhwb3J0czogW1xuICAgICAgICBOZ3hBcHBsZU1hcGtpdENvbXBvbmVudCxcbiAgICAgICAgTmd4QXBwbGVNYXBraXRBbm5vdGF0aW9uQ29tcG9uZW50XG4gICAgXSxcbiAgICBib290c3RyYXA6IFtcbiAgICAgICAgTmd4QXBwbGVNYXBraXRDb21wb25lbnQsXG4gICAgICAgIE5neEFwcGxlTWFwa2l0QW5ub3RhdGlvbkNvbXBvbmVudFxuICAgIF1cbn0pXG5leHBvcnQgY2xhc3MgQXBwbGVNYXBzTW9kdWxlIHtcbn1cbiJdfQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwbGUtbWFwcy5tb2R1bGUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9wcm9qZWN0cy9uZ3gtYXBwbGUtbWFwa2l0L3NyYy9saWIvYXBwbGUtbWFwcy5tb2R1bGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFDLFFBQVEsRUFBQyxNQUFNLGVBQWUsQ0FBQztBQUN2QyxPQUFPLEVBQUMsb0JBQW9CLEVBQUMsTUFBTSwwQkFBMEIsQ0FBQztBQUM5RCxPQUFPLEVBQ0gsOEJBQThCLEVBQ2pDLE1BQU0sd0VBQXdFLENBQUM7QUFDaEYsT0FBTyxFQUFDLFlBQVksRUFBQyxNQUFNLGlCQUFpQixDQUFDOztBQWlCN0MsTUFBTSxPQUFPLGVBQWU7aUlBQWYsZUFBZTtrSUFBZixlQUFlLGNBSHBCLDhCQUE4QixrQkFUOUIsb0JBQW9CO1lBQ3BCLDhCQUE4QixhQUV4QixZQUFZLGFBRWxCLG9CQUFvQjtZQUNwQiw4QkFBOEI7a0lBTXpCLGVBQWUsWUFUZCxZQUFZOzsyRkFTYixlQUFlO2tCQWQzQixRQUFRO21CQUFDO29CQUNOLFlBQVksRUFBRTt3QkFDVixvQkFBb0I7d0JBQ3BCLDhCQUE4QjtxQkFDakM7b0JBQ0QsT0FBTyxFQUFFLENBQUMsWUFBWSxDQUFDO29CQUN2QixPQUFPLEVBQUU7d0JBQ0wsb0JBQW9CO3dCQUNwQiw4QkFBOEI7cUJBQ2pDO29CQUNELFNBQVMsRUFBRTt3QkFDUCw4QkFBOEI7cUJBQ2pDO2lCQUNKIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtOZ01vZHVsZX0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQge0FwcGxlTWFwa2l0Q29tcG9uZW50fSBmcm9tICcuL2FwcGxlLW1hcGtpdC5jb21wb25lbnQnO1xuaW1wb3J0IHtcbiAgICBBcHBsZU1hcGtpdEFubm90YXRpb25Db21wb25lbnRcbn0gZnJvbSAnLi9jb21wb25lbnRzL2FwcGxlLW1hcGtpdC1hbm5vdGF0aW9uL2FwcGxlLW1hcGtpdC1hbm5vdGF0aW9uLmNvbXBvbmVudCc7XG5pbXBvcnQge0NvbW1vbk1vZHVsZX0gZnJvbSAnQGFuZ3VsYXIvY29tbW9uJztcblxuXG5ATmdNb2R1bGUoe1xuICAgIGRlY2xhcmF0aW9uczogW1xuICAgICAgICBBcHBsZU1hcGtpdENvbXBvbmVudCxcbiAgICAgICAgQXBwbGVNYXBraXRBbm5vdGF0aW9uQ29tcG9uZW50XG4gICAgXSxcbiAgICBpbXBvcnRzOiBbQ29tbW9uTW9kdWxlXSxcbiAgICBleHBvcnRzOiBbXG4gICAgICAgIEFwcGxlTWFwa2l0Q29tcG9uZW50LFxuICAgICAgICBBcHBsZU1hcGtpdEFubm90YXRpb25Db21wb25lbnRcbiAgICBdLFxuICAgIGJvb3RzdHJhcDogW1xuICAgICAgICBBcHBsZU1hcGtpdEFubm90YXRpb25Db21wb25lbnRcbiAgICBdXG59KVxuZXhwb3J0IGNsYXNzIEFwcGxlTWFwc01vZHVsZSB7XG59XG4iXX0=

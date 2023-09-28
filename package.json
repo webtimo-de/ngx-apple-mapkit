@@ -1,6 +1,6 @@
 {
   "name": "ngx-apple-mapkit",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "description": "This is a renewed variant of the ngx-apple-maps. This runs on Angular 16 and Ivy. I personally use the library and it is therefore regularly maintained.\n",
   "keywords": [
     "apple",
@@ -24,8 +24,8 @@
     "url": "https://github.com/webtimo-de/ngx-apple-mapkit"
   },
   "peerDependencies": {
-    "@angular/common": "^16.0.0",
-    "@angular/core": "^16.0.0"
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
