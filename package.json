@@ -1,6 +1,6 @@
 {
   "name": "ngx-apple-mapkit",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "This is a renewed variant of the ngx-apple-maps. This runs on Angular 16 and Ivy. I personally use the library and it is therefore regularly maintained.\n",
   "keywords": [
     "apple",
@@ -14,19 +14,24 @@
     "angular-maps",
     "angular-apple-maps"
   ],
-  "author": "Timo Köhler <npm@web-timo.de> (https://www.web-timo.de/)",
+  "author": {
+    "email": "npm@web-timo.de",
+    "name": "Timo Köhler",
+    "url": "https://www.web-timo.de/"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/webtimo-de/ngx-apple-mapkit.git"
+    "url": "https://github.com/webtimo-de/ngx-apple-mapkit"
   },
   "peerDependencies": {
-    "@angular/common": "^16.2.0",
-    "@angular/core": "^16.2.0"
+    "@angular/common": "^16.0.0",
+    "@angular/core": "^16.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
   "sideEffects": false,
+  "license": "MIT",
   "module": "fesm2022/ngx-apple-mapkit.mjs",
   "typings": "index.d.ts",
   "exports": {
@@ -39,17 +44,5 @@
       "esm": "./esm2022/ngx-apple-mapkit.mjs",
       "default": "./fesm2022/ngx-apple-mapkit.mjs"
     }
-  },
-  "bugs": {
-    "url": "https://github.com/webtimo-de/ngx-apple-mapkit/issues"
-  },
-  "homepage": "https://github.com/webtimo-de/ngx-apple-mapkit#readme",
-  "main": "index.d.ts",
-  "directories": {
-    "lib": "lib"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "license": "MIT"
+  }
 }

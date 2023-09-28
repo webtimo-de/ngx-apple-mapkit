@@ -30,19 +30,19 @@ For generating you need:
 Insert into `ngx-apple-mapkit` tag following code:
 
 ```angular2html
-<ngx-apple-mapkit-annotation 
-    [latitude]="latitude" 
-    [longitude]="longitude"
+<ngx-apple-mapkit-annotation
+        [latitude]="latitude"
+        [longitude]="longitude"
 ></ngx-apple-mapkit-annotation>
 ```
 
 **OR**
 
 ```angular2html
-<ngx-apple-mapkit-annotation 
-    *ngFor="const annotation of annotations"
-    [latitude]="annotation.latitude" 
-    [longitude]="annotation.longitude"
+<ngx-apple-mapkit-annotation
+        *ngFor="const annotation of annotations"
+        [latitude]="annotation.latitude"
+        [longitude]="annotation.longitude"
 ></ngx-apple-mapkit-annotation>
 ```
 
@@ -51,10 +51,10 @@ Insert into `ngx-apple-mapkit` tag following code:
 You can provide additional `annotationOptions: AnnotationConstructorOptionsInterface` param for each annotation
 
 ```angular2html
-<ngx-apple-mapkit-annotation 
-    [latitude]="latitude" 
-    [longitude]="longitude"
-    [options]="annotationOptions"
+<ngx-apple-mapkit-annotation
+        [latitude]="latitude"
+        [longitude]="longitude"
+        [options]="annotationOptions"
 ></ngx-apple-mapkit-annotation>
 ```
 
@@ -77,11 +77,11 @@ Description of them https://developer.apple.com/documentation/mapkitjs/mapkit/ma
 
 ```typescript
 const options: MapKitInitOptions = {
-  language: 'en', // default browser language
-  callback: (data) => {
-    // return map event
-  },
-  JWT: string // Json Web token
+   language: 'en', // default browser language
+   callback: (data) => {
+      // return map event
+   },
+   JWT: string // Json Web token
 }
 ```
 
@@ -90,10 +90,10 @@ const options: MapKitInitOptions = {
 Created map getting from the `getting from options: MapKitInitOptions` **callback** response
 
 ```angular2html
-<ngx-apple-mapkit-annotation 
-    [latitude]="latitude" 
-    [longitude]="longitude"
-    (onLoaded)="onLoaded($event)"
+<ngx-apple-mapkit-annotation
+        [latitude]="latitude"
+        [longitude]="longitude"
+        (onLoaded)="onLoaded($event)"
 ></ngx-apple-mapkit-annotation>
 ```
 
@@ -101,7 +101,7 @@ In your `*.component.ts` file
 
 ```typescript
 onLoaded(e) {
-  this.map = e;
+   this.map = e;
 }
 ```
 
@@ -109,63 +109,63 @@ After successfully initializatin of the map you are got map object with next met
 
 ```typescript
   key: 1 // current map key identifier
-  isRotationAvailable() // return boolean value
-  isRotationEnabled() // return boolean value
-  isScrollEnabled() // return boolean value
-  isZoomEnabled() // return boolean value
-  getCenter() // return object with coordinates of map center
-  /*
-    {
-      latitude: 1,
-      longitude: 1,
-    }
-  */
-  setCenterAnimated(latitude: number, longitude: number, animate: boolean = true) // set center of the map
-  
-  getRegion() // return current map region
-  setRegionAnimated(center, span = null, animate = true) //  set region for the current map, center is required param, its the object with latitude: number, longitude: number params
-  getRotation() // return current rotation value in degrees
-  setRotationAnimated(degrees, animate = true) // set rotation to passed value
-  getCameraDistance() // return current camera distance
-  setCameraDistanceAnimated(distance: number, animate: boolean = true)
-  getCameraZoomRange() // return available zoom range for the current map
-  // More about cameraZoomRange https://developer.apple.com/documentation/mapkitjs/mapkit/camerazoomrange?changes=latest_minor
-  setCameraZoomRangeAnimated(minCameraDistance, maxCameraDistance, animate: boolean = true)
-  getColorScheme() // return current color scheme (light or dark)
-  setColorScheme: (scheme = 'light') // set color scheme (light or dark)
-  getDistances()
-  setDistances() // 'metric' | 'imperial' | 'adaptive'
-  getMapType() // return 'standard' | 'mutedStandard' | 'hybrid' | 'satellite'
-  setMapType() // 'standard' | 'mutedStandard' | 'hybrid' | 'satellite'
-  getPadding() // return current padding
-  setPadding(padding) // pass object {top: 0, left: 0, right: 0, bottom: 0}
-  getShowsMapTypeControl() 
-  setShowsMapTypeControl(value: boolean) // show or hide map type control
-  getShowsZoomControl() 
-  setShowsZoomControl(value: boolean) // show or hide map zoom controls
-  getShowsUserLocationControl() 
-  setShowsUserLocationControl(value: boolean) // show or hide Shows user location controls
-  getShowsPointsOfInterest() 
-  setShowsPointsOfInterest(value: boolean) // show or hide places on the map
-  getShowsScale()
-  setShowsScale()
-  getTintColor()
-  setTintColor(color: string)
-  showItems(annotations, options)
-  // Zoom to passed annotation, can be Array of annoations or single annotation
-  // You can get created annotations from getAnnotations() function
-  // options - object
-  /*
-    options = {
-        animate: true, // optional, default true
-        padding: {top: 20} // left right bottom, optional
-        span: {from: 0, to: 1} // optional
-    }
-  */
-  getAnnotations() // return Promise of annotations
-  getSelectedAnnotations() // return selected annotations
-  zoom // number, specify zoom for map
-  showComass // 'hidden' | 'adaptive' | 'visible' defulat adaptive
+isRotationAvailable() // return boolean value
+isRotationEnabled() // return boolean value
+isScrollEnabled() // return boolean value
+isZoomEnabled() // return boolean value
+getCenter() // return object with coordinates of map center
+/*
+  {
+    latitude: 1,
+    longitude: 1,
+  }
+*/
+setCenterAnimated(latitude: number, longitude: number, animate: boolean = true) // set center of the map
+
+getRegion() // return current map region
+setRegionAnimated(center, span = null, animate = true) //  set region for the current map, center is required param, its the object with latitude: number, longitude: number params
+getRotation() // return current rotation value in degrees
+setRotationAnimated(degrees, animate = true) // set rotation to passed value
+getCameraDistance() // return current camera distance
+setCameraDistanceAnimated(distance: number, animate: boolean = true)
+getCameraZoomRange() // return available zoom range for the current map
+// More about cameraZoomRange https://developer.apple.com/documentation/mapkitjs/mapkit/camerazoomrange?changes=latest_minor
+setCameraZoomRangeAnimated(minCameraDistance, maxCameraDistance, animate: boolean = true)
+getColorScheme() // return current color scheme (light or dark)
+setColorScheme: (scheme = 'light') // set color scheme (light or dark)
+getDistances()
+setDistances() // 'metric' | 'imperial' | 'adaptive'
+getMapType() // return 'standard' | 'mutedStandard' | 'hybrid' | 'satellite'
+setMapType() // 'standard' | 'mutedStandard' | 'hybrid' | 'satellite'
+getPadding() // return current padding
+setPadding(padding) // pass object {top: 0, left: 0, right: 0, bottom: 0}
+getShowsMapTypeControl()
+setShowsMapTypeControl(value: boolean) // show or hide map type control
+getShowsZoomControl()
+setShowsZoomControl(value: boolean) // show or hide map zoom controls
+getShowsUserLocationControl()
+setShowsUserLocationControl(value: boolean) // show or hide Shows user location controls
+getShowsPointsOfInterest()
+setShowsPointsOfInterest(value: boolean) // show or hide places on the map
+getShowsScale()
+setShowsScale()
+getTintColor()
+setTintColor(color: string)
+showItems(annotations, options)
+// Zoom to passed annotation, can be Array of annoations or single annotation
+// You can get created annotations from getAnnotations() function
+// options - object
+/*
+  options = {
+      animate: true, // optional, default true
+      padding: {top: 20} // left right bottom, optional
+      span: {from: 0, to: 1} // optional
+  }
+*/
+getAnnotations() // return Promise of annotations
+getSelectedAnnotations() // return selected annotations
+zoom // number, specify zoom for map
+showComass // 'hidden' | 'adaptive' | 'visible' defulat adaptive
 ```
 
 ### MapConstructorOptions
@@ -174,40 +174,40 @@ All options are optional
 
 ```typescript
 const settings: MapConstructorOptions = {
-  region: {
-    center: {
+   region: {
+      center: {
+         latitude: 37.3316850890998,
+         longitude: -122.030067374026
+      },
+      span: { // https://developer.apple.com/documentation/mapkitjs/mapkit/coordinatespan/2973870-mapkit_coordinatespan
+         from: 0,
+         to: 1
+      }
+   },
+   center: { // center of the map
       latitude: 37.3316850890998,
       longitude: -122.030067374026
-    },
-    span: { // https://developer.apple.com/documentation/mapkitjs/mapkit/coordinatespan/2973870-mapkit_coordinatespan
-      from: 0,
-      to: 1
-    }
-  },
-  center: { // center of the map
-    latitude: 37.3316850890998,
-    longitude: -122.030067374026
-  },
-  rotation: 45, // degrees
-  tintColor: '#000', // color of map controls
-  colorScheme: 'light', // light or dark, for default it's the browser color cheme
-  mapType: 'standart', // 'mutedStandard' | 'standard' | 'satellite' | 'hybrid'
-  padding: { // map padding
-    top: 10,
-    right: 10,
-    bottom: 0,
-    left: 0
-  },
-  showsMapTypeControl: true, // is show mapType control on the map
-  isRotationEnabled: true,
-  showsCompass: 'adaptive', // 'adaptive' (showing always and on the touch screen devices hides if rotationElabled: false and rotation: 0) | 'hidden' | 'visible'
-  isZoomEnabled: true, // is zoom available
-  showsZoomControl: true,
-  isScrollEnabled: true, // A Boolean value that determines whether the user may scroll the map with a pointing device or with gestures on a touchscreen.
-  showsScale: 'adaptive', // 'adaptive' | 'hidden' | 'visible' https://developer.apple.com/documentation/mapkitjs/mapkit/map/2973941-showsscale?changes=latest_minor
-  showsUserLocation: false,
-  tracksUserLocation: false,
-  showsUserLocationControl: true
+   },
+   rotation: 45, // degrees
+   tintColor: '#000', // color of map controls
+   colorScheme: 'light', // light or dark, for default it's the browser color cheme
+   mapType: 'standart', // 'mutedStandard' | 'standard' | 'satellite' | 'hybrid'
+   padding: { // map padding
+      top: 10,
+      right: 10,
+      bottom: 0,
+      left: 0
+   },
+   showsMapTypeControl: true, // is show mapType control on the map
+   isRotationEnabled: true,
+   showsCompass: 'adaptive', // 'adaptive' (showing always and on the touch screen devices hides if rotationElabled: false and rotation: 0) | 'hidden' | 'visible'
+   isZoomEnabled: true, // is zoom available
+   showsZoomControl: true,
+   isScrollEnabled: true, // A Boolean value that determines whether the user may scroll the map with a pointing device or with gestures on a touchscreen.
+   showsScale: 'adaptive', // 'adaptive' | 'hidden' | 'visible' https://developer.apple.com/documentation/mapkitjs/mapkit/map/2973941-showsscale?changes=latest_minor
+   showsUserLocation: false,
+   tracksUserLocation: false,
+   showsUserLocationControl: true
 }
 ```
 
@@ -282,9 +282,9 @@ this.appleMapsSearchService.initSearch(options);
 
 ```typescript
 this.appleMapsSearchService.search(
-        query, // search query
-        (err, data) => {}, // callback
-        options // SearchInterface
+  query, // search query
+  (err, data) => {}, // callback
+  options // SearchInterface
 );
 ```
 
@@ -292,9 +292,9 @@ this.appleMapsSearchService.search(
 
 ```typescript
 this.appleMapsSearchService.autocomplete(
-        query, // search query
-        (err, data) => {}, // callback
-        options // SearchInterface
+  query, // search query
+  (err, data) => {}, // callback
+  options // SearchInterface
 );
 ```
 
@@ -302,22 +302,22 @@ this.appleMapsSearchService.autocomplete(
 
 ```typescript
 const options = {  // optional
-   getsUserLocation: false, // search near user
-   coordinate: {
+  getsUserLocation: false, // search near user
+  coordinate: {
+    latitude: number,
+    longitude: number,
+  },
+  language: 'en', // default browser language
+  region: {
+    center: {
       latitude: number,
       longitude: number,
-   },
-   language: 'en', // default browser language
-   region: {
-      center: {
-         latitude: number,
-         longitude: number,
-      };
-      span: {
-         from: number,
-         to: number,
-      }
-   }
+    };
+    span: {
+      from: number,
+      to: number,
+    }
+  }
 };
 ```
 
