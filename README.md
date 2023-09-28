@@ -1,4 +1,4 @@
-# Angular 16 Apple Maps (mapkit.js)
+# Angular Apple Maps (mapkit.js)
 
 ## Install
 
