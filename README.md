@@ -35,9 +35,9 @@ For generating you need:
 Insert into `ngx-apple-mapkit` tag following code:
 
 ```angular2html
-<ngx-apple-mapkit-annotation 
-    [latitude]="latitude" 
-    [longitude]="longitude"
+<ngx-apple-mapkit-annotation
+        [latitude]="latitude"
+        [longitude]="longitude"
 ></ngx-apple-mapkit-annotation>
 ```
 
@@ -66,7 +66,6 @@ You can provide additional `annotationOptions: AnnotationConstructorOptionsInter
 You can pass elements or component into annotation
 
 ```angular2html
-
 <ngx-apple-mapkit-annotation
         [latitude]="latitude"
         [longitude]="longitude"
@@ -137,7 +136,7 @@ After successfully initializatin of the map you are got map object with next met
   // More about cameraZoomRange https://developer.apple.com/documentation/mapkitjs/mapkit/camerazoomrange?changes=latest_minor
   setCameraZoomRangeAnimated(minCameraDistance, maxCameraDistance, animate: boolean = true)
   getColorScheme() // return current color scheme (light or dark)
-  setColorScheme: (scheme = 'light') // set color scheme (light or dark)
+  setColorScheme(scheme = 'light') // set color scheme (light or dark)
   getDistances()
   setDistances() // 'metric' | 'imperial' | 'adaptive'
   getMapType() // return 'standard' | 'mutedStandard' | 'hybrid' | 'satellite'
@@ -170,7 +169,7 @@ After successfully initializatin of the map you are got map object with next met
   getAnnotations() // return Promise of annotations
   getSelectedAnnotations() // return selected annotations
   zoom // number, specify zoom for map
-  showComass // 'hidden' | 'adaptive' | 'visible' defulat adaptive
+  showCompass // 'hidden' | 'adaptive' | 'visible' defulat adaptive
 ```
 
 ### MapConstructorOptions
@@ -307,22 +306,22 @@ this.appleMapsSearchService.autocomplete(
 
 ```typescript
 const options = {  // optional
-  getsUserLocation: false, // search near user
-  coordinate: {
-    latitude: number,
-    longitude: number,
-  },
-  language: 'en', // default browser language
-  region: {
-    center: {
+   getsUserLocation: false, // search near user
+   coordinate: {
       latitude: number,
       longitude: number,
-    };
-    span: {
-      from: number,
-      to: number,
-    }
-  }
+   },
+   language: 'en', // default browser language
+   region: {
+      center: {
+         latitude: number,
+         longitude: number,
+      };
+      span: {
+         from: number,
+         to: number,
+      }
+   }
 };
 ```
 
