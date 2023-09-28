@@ -11,6 +11,8 @@ export declare class AppleMapkitComponent implements DoCheck, OnInit, AfterViewI
     private cdr;
     options: MapKitInitOptions;
     settings: MapConstructorOptions;
+    logging: boolean;
+    language: "en" | "de" | "es" | "it" | "fr" | string;
     height: string;
     onLoaded: EventEmitter<any>;
     private loaded;
@@ -38,5 +40,5 @@ export declare class AppleMapkitComponent implements DoCheck, OnInit, AfterViewI
     ngDoCheck(): void;
     ngAfterViewInit(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AppleMapkitComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AppleMapkitComponent, "ngx-apple-mapkit", never, { "options": { "alias": "options"; "required": false; }; "settings": { "alias": "settings"; "required": false; }; "height": { "alias": "height"; "required": false; }; }, { "onLoaded": "onLoaded"; }, ["annotations"], ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AppleMapkitComponent, "ngx-apple-mapkit", never, { "options": { "alias": "options"; "required": false; }; "settings": { "alias": "settings"; "required": false; }; "logging": { "alias": "logging"; "required": false; }; "language": { "alias": "language"; "required": false; }; "height": { "alias": "height"; "required": false; }; }, { "onLoaded": "onLoaded"; }, ["annotations"], ["*"], false, never>;
 }

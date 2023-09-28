@@ -394,6 +394,7 @@ class AppleMapkitComponent {
         this.appleMapsService = appleMapsService;
         this.viewTemplateRef = viewTemplateRef;
         this.cdr = cdr;
+        this.logging = false;
         this.onLoaded = new EventEmitter();
         this.loaded = null;
         // @ContentChildren(TemplateRef, {descendants: true}) template: QueryList<TemplateRef<any>>;
@@ -412,10 +413,15 @@ class AppleMapkitComponent {
         this.settings = {};
     }
     init() {
+        if (this.language && typeof this.language === "string") {
+            this.defaultOptions.language = this.language;
+        }
         const settings = Object.assign({ ...this.defaultSettings, ...this.settings });
         const options = Object.assign({ ...this.defaultOptions, ...this.options });
         this.appleMapsService.init(options, settings, (data) => {
-            console.log("[Init ngx-apple-mapkit]", data);
+            if (this.logging) {
+                console.log("[ngx-apple-mapkit] Init", data);
+            }
             if (!this.loaded) {
                 this.onLoaded.emit(data);
                 this.loaded = data;
@@ -469,7 +475,7 @@ class AppleMapkitComponent {
         this.cdr.detectChanges();
     }
     static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: AppleMapkitComponent, deps: [{ token: i0.KeyValueDiffers }, { token: AppleMapsService }, { token: i0.ViewContainerRef }, { token: i0.ChangeDetectorRef }], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.2.3", type: AppleMapkitComponent, selector: "ngx-apple-mapkit", inputs: { options: "options", settings: "settings", height: "height" }, outputs: { onLoaded: "onLoaded" }, queries: [{ propertyName: "annotations", predicate: ["apple-mapkit-annotation"], descendants: true }], ngImport: i0, template: "<div class=\"ngx-apple-mapkit\">\r\n    <div class=\"ngx-apple-mapkit__map\"></div>\r\n</div>\r\n<ng-content></ng-content>\r\n<ng-container></ng-container>\r\n", styles: [".ngx-apple-mapkit{height:100%;position:relative}.ngx-apple-mapkit .ngx-apple-mapkit__map{inset:0;position:absolute}\n"] }); }
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.2.3", type: AppleMapkitComponent, selector: "ngx-apple-mapkit", inputs: { options: "options", settings: "settings", logging: "logging", language: "language", height: "height" }, outputs: { onLoaded: "onLoaded" }, queries: [{ propertyName: "annotations", predicate: ["apple-mapkit-annotation"], descendants: true }], ngImport: i0, template: "<div class=\"ngx-apple-mapkit\">\r\n    <div class=\"ngx-apple-mapkit__map\"></div>\r\n</div>\r\n<ng-content></ng-content>\r\n<ng-container></ng-container>\r\n", styles: [".ngx-apple-mapkit{height:100%;position:relative}.ngx-apple-mapkit .ngx-apple-mapkit__map{inset:0;position:absolute}\n"] }); }
 }
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImport: i0, type: AppleMapkitComponent, decorators: [{
             type: Component,
@@ -477,6 +483,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImpor
         }], ctorParameters: function () { return [{ type: i0.KeyValueDiffers }, { type: AppleMapsService }, { type: i0.ViewContainerRef }, { type: i0.ChangeDetectorRef }]; }, propDecorators: { options: [{
                 type: Input
             }], settings: [{
+                type: Input
+            }], logging: [{
+                type: Input
+            }], language: [{
                 type: Input
             }], height: [{
                 type: Input
