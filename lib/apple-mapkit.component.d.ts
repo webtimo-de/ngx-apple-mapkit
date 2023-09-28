@@ -13,6 +13,7 @@ export declare class AppleMapkitComponent implements DoCheck, OnInit, AfterViewI
     settings: MapConstructorOptions;
     height: string;
     onLoaded: EventEmitter<any>;
+    private loaded;
     annotations: QueryList<AppleMapkitAnnotationComponent>;
     defaultOptions: {
         language: string;

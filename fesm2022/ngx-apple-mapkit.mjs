@@ -40,11 +40,14 @@ class AppleMapsService {
         }
         return newSettings;
     }
-    init(options, settings = {}, cb = (data) => { }) {
+    init(options, settings = {}, cb = (data) => {
+    }) {
         if (!options.JWT || !this.isBrowser) {
             return;
         }
-        this.mapsQueue.push({ settings, cb });
+        if (Object.keys(settings).length !== 0) {
+            this.mapsQueue.push({ settings, cb });
+        }
         if (this.initialized === 'STOPPED') {
             this.initialized = 'PENDING';
             this.options = options;
@@ -76,6 +79,13 @@ class AppleMapsService {
         const object = {
             key: index - 1,
             map: this.maps[index - 1],
+            addEventListener: (type, cb, context) => {
+                if (!type || !cb) {
+                    throw new Error('Type and listener are required');
+                    return;
+                }
+                return this.maps[index - 1].addEventListener(type, cb, context);
+            },
             isRotationAvailable: () => {
                 return this.maps[index - 1].isRotationAvailable;
             },
@@ -385,6 +395,7 @@ class AppleMapkitComponent {
         this.viewTemplateRef = viewTemplateRef;
         this.cdr = cdr;
         this.onLoaded = new EventEmitter();
+        this.loaded = null;
         // @ContentChildren(TemplateRef, {descendants: true}) template: QueryList<TemplateRef<any>>;
         // private templates: QueryList<TemplateRef<any>>;
         this.defaultOptions = { language: 'en' };
@@ -404,8 +415,10 @@ class AppleMapkitComponent {
         const settings = Object.assign({ ...this.defaultSettings, ...this.settings });
         const options = Object.assign({ ...this.defaultOptions, ...this.options });
         this.appleMapsService.init(options, settings, (data) => {
-            if (this.onLoaded.length) {
+            console.log("[Init ngx-apple-mapkit]", data);
+            if (!this.loaded) {
                 this.onLoaded.emit(data);
+                this.loaded = data;
             }
             this.keyValue = data.key;
             this.keySource.next(data.key);
