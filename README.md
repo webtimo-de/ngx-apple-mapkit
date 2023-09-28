@@ -20,8 +20,7 @@ For generating you need:
 ## Get started
 
 1. Add to the `index.html` script including
-   `  <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
-   `
+   `<script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>`
 2. Add `AppleMapsModule` to imports in your `app.module.ts`
 
 ## Map(s) creation
