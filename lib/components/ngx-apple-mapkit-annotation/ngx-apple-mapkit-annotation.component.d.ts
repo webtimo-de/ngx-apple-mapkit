@@ -1,9 +1,9 @@
 import { DoCheck, ElementRef, KeyValueDiffers, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { AnnotationConstructorOptionsInterface } from '../../declarations';
 import { AppleMapsService } from "../../apple-maps.service";
-import { NgxAppleMapsComponent } from "../ngx-apple-maps/ngx-apple-maps.component";
+import { NgxAppleMapkitComponent } from "../ngx-apple-mapkit/ngx-apple-mapkit.component";
 import * as i0 from "@angular/core";
-export declare class NgxAppleMapsAnnotationComponent implements OnInit, DoCheck, OnDestroy {
+export declare class NgxAppleMapkitAnnotationComponent implements OnInit, DoCheck, OnDestroy {
     private appleMapsService;
     private differs;
     private ref;
@@ -22,7 +22,7 @@ export declare class NgxAppleMapsAnnotationComponent implements OnInit, DoCheck,
     private annotationElement;
     private calloutEnabled;
     private parentKey;
-    constructor(appleMapsService: AppleMapsService, differs: KeyValueDiffers, ref: ElementRef, renderer: Renderer2, parent: NgxAppleMapsComponent);
+    constructor(appleMapsService: AppleMapsService, differs: KeyValueDiffers, ref: ElementRef, renderer: Renderer2, parent: NgxAppleMapkitComponent);
     ngOnInit(): void;
     private initAnnotation;
     private transformOption;
@@ -32,6 +32,6 @@ export declare class NgxAppleMapsAnnotationComponent implements OnInit, DoCheck,
     ngDoCheck(): void;
     private optionsChanged;
     ngOnDestroy(): void;
-    static ɵfac: i0.ɵɵFactoryDeclaration<NgxAppleMapsAnnotationComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<NgxAppleMapsAnnotationComponent, "ngx-apple-maps-annotation", never, { "options": { "alias": "options"; "required": false; }; "latitude": { "alias": "latitude"; "required": false; }; "longitude": { "alias": "longitude"; "required": false; }; }, {}, never, ["*"], false, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<NgxAppleMapkitAnnotationComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<NgxAppleMapkitAnnotationComponent, "ngx-apple-mapkit-annotation", never, { "options": { "alias": "options"; "required": false; }; "latitude": { "alias": "latitude"; "required": false; }; "longitude": { "alias": "longitude"; "required": false; }; }, {}, never, ["*"], false, never>;
 }

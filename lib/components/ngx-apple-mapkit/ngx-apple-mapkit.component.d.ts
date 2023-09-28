@@ -2,9 +2,9 @@ import { AfterViewInit, ChangeDetectorRef, DoCheck, EventEmitter, KeyValueDiffer
 import { MapConstructorOptions, MapKitInitOptions } from "../../declarations";
 import { BehaviorSubject } from "rxjs";
 import { AppleMapsService } from "../../apple-maps.service";
-import { NgxAppleMapsAnnotationComponent } from "../ngx-apple-maps-annotation/ngx-apple-maps-annotation.component";
+import { NgxAppleMapkitAnnotationComponent } from "../ngx-apple-mapkit-annotation/ngx-apple-mapkit-annotation.component";
 import * as i0 from "@angular/core";
-export declare class NgxAppleMapsComponent implements DoCheck, OnInit, AfterViewInit {
+export declare class NgxAppleMapkitComponent implements DoCheck, OnInit, AfterViewInit {
     private differs;
     private appleMapsService;
     private viewTemplateRef;
@@ -13,7 +13,7 @@ export declare class NgxAppleMapsComponent implements DoCheck, OnInit, AfterView
     settings: MapConstructorOptions;
     height: string;
     onLoaded: EventEmitter<any>;
-    annotations: QueryList<NgxAppleMapsAnnotationComponent>;
+    annotations: QueryList<NgxAppleMapkitAnnotationComponent>;
     defaultOptions: {
         language: string;
     };
@@ -36,6 +36,6 @@ export declare class NgxAppleMapsComponent implements DoCheck, OnInit, AfterView
     ngOnInit(): void;
     ngDoCheck(): void;
     ngAfterViewInit(): void;
-    static ɵfac: i0.ɵɵFactoryDeclaration<NgxAppleMapsComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<NgxAppleMapsComponent, "ngx-apple-maps", never, { "options": { "alias": "options"; "required": false; }; "settings": { "alias": "settings"; "required": false; }; "height": { "alias": "height"; "required": false; }; }, { "onLoaded": "onLoaded"; }, ["annotations"], ["*"], false, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<NgxAppleMapkitComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<NgxAppleMapkitComponent, "ngx-apple-mapkit", never, { "options": { "alias": "options"; "required": false; }; "settings": { "alias": "settings"; "required": false; }; "height": { "alias": "height"; "required": false; }; }, { "onLoaded": "onLoaded"; }, ["annotations"], ["*"], false, never>;
 }
