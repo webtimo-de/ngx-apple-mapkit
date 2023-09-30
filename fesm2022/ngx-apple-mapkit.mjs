@@ -132,54 +132,78 @@ class AppleMapsService {
             // }
             getCameraDistance: () => {
                 return this.maps[index - 1].cameraDistance;
-            }, setCameraDistanceAnimated: (distance, animate = true) => {
+            },
+            setCameraDistanceAnimated: (distance, animate = true) => {
                 this.maps[index - 1].setCameraDistanceAnimated(distance, animate);
-            }, getCameraZoomRange: () => {
+            },
+            getCameraZoomRange: () => {
                 const { minCameraDistance, maxCameraDistance } = this.maps[index - 1].cameraZoomRange;
                 return { minCameraDistance, maxCameraDistance };
-            }, setCameraZoomRangeAnimated: (minCameraDistance, maxCameraDistance, animate = true) => {
+            },
+            setCameraZoomRangeAnimated: (minCameraDistance, maxCameraDistance, animate = true) => {
                 this.maps[index - 1].setCameraZoomRangeAnimated(new window.mapkit.CameraZoomRange(minCameraDistance, maxCameraDistance), animate);
-            }, getColorScheme: () => {
+            },
+            getColorScheme: () => {
                 return this.maps[index - 1].colorScheme;
-            }, setColorScheme: (scheme = 'light') => {
+            },
+            setColorScheme: (scheme = 'light') => {
                 this.maps[index - 1].colorScheme = scheme;
-            }, getDistances: () => {
+            },
+            getDistances: () => {
                 return this.maps[index - 1].distances;
-            }, setDistances: (distance) => {
+            },
+            setDistances: (distance) => {
                 this.maps[index - 1].distances = distance;
-            }, getMapType: () => {
+            },
+            getMapType: () => {
                 return this.maps[index - 1].mapType;
-            }, setMapType: (type) => {
+            },
+            setMapType: (type) => {
                 this.maps[index - 1].mapType = type;
-            }, getPadding: () => {
+            },
+            getPadding: () => {
                 return this.maps[index - 1].padding;
-            }, setPadding: (padding) => {
+            },
+            setPadding: (padding) => {
                 this.maps[index - 1].padding = new window.mapkit.Padding(padding);
-            }, getShowsMapTypeControl: () => {
+            },
+            getShowsMapTypeControl: () => {
                 return this.maps[index - 1].showsMapTypeControl;
-            }, setShowsMapTypeControl: (value) => {
+            },
+            setShowsMapTypeControl: (value) => {
                 this.maps[index - 1].showsMapTypeControl = value;
-            }, getShowsZoomControl: () => {
+            },
+            getShowsZoomControl: () => {
                 return this.maps[index - 1].showsZoomControl;
-            }, setShowsZoomControl: (value) => {
+            },
+            setShowsZoomControl: (value) => {
                 this.maps[index - 1].showsZoomControl = value;
-            }, getShowsUserLocationControl: () => {
+            },
+            getShowsUserLocationControl: () => {
                 return this.maps[index - 1].showsUserLocationControl;
-            }, setShowsUserLocationControl: (value) => {
+            },
+            setShowsUserLocationControl: (value) => {
                 this.maps[index - 1].showsUserLocationControl = value;
-            }, getShowsPointsOfInterest: () => {
+            },
+            getShowsPointsOfInterest: () => {
                 return this.maps[index - 1].showsPointsOfInterest;
-            }, setShowsPointsOfInterest: (value) => {
+            },
+            setShowsPointsOfInterest: (value) => {
                 this.maps[index - 1].showsPointsOfInterest = value;
-            }, getShowsScale: () => {
+            },
+            getShowsScale: () => {
                 return this.maps[index - 1].showsScale;
-            }, setShowsScale: (value) => {
+            },
+            setShowsScale: (value) => {
                 this.maps[index - 1].showsScale = value;
-            }, getTintColor: () => {
+            },
+            getTintColor: () => {
                 return this.maps[index - 1].tintColor;
-            }, setTintColor: (color) => {
+            },
+            setTintColor: (color) => {
                 this.maps[index - 1].tintColor = color;
-            }, showItems: (items, mapShowItemOptions = {}) => {
+            },
+            showItems: (items, mapShowItemOptions = {}) => {
                 const passingOptions = { animate: options.animate || true };
                 if (mapShowItemOptions.span) {
                     // @ts-ignore
@@ -191,7 +215,8 @@ class AppleMapsService {
                 }
                 const passingItems = Array.isArray(items) ? items : [items];
                 this.maps[index - 1].showItems(passingItems, passingOptions);
-            }, getAnnotations: () => {
+            },
+            getAnnotations: () => {
                 return new Promise(resolve => {
                     if (this.annotations[index - 1]) {
                         resolve(this.annotations[index - 1]);
@@ -208,16 +233,51 @@ class AppleMapsService {
                     }
                 });
                 // return this.annotations[index - 1];
-            }, getSelectedAnnotations: () => {
+            },
+            getSelectedAnnotations: () => {
                 return this.maps[index - 1].selectedAnnotation;
-            }, set zoom(value) {
-                this.map._impl.zoomLevel = value;
-            }, get zoom() {
-                return this.map._impl.zoomLevel;
-            }, set showCompass(value) {
-                this.map.showsCompass = value;
-            }, get showCompass() {
-                return this.showCompass;
+            },
+            set zoom(value) {
+                this.maps[index - 1]._impl.zoomLevel = value;
+            },
+            get zoom() {
+                return this.maps[index - 1]._impl.zoomLevel;
+            },
+            set showsCompass(value) {
+                this.maps[index - 1].showsCompass = value;
+            },
+            get showsCompass() {
+                return this.maps[index - 1].showsCompass;
+            },
+            get showsMapTypeControl() {
+                return this.maps[index - 1].showsMapTypeControl;
+            },
+            set showsMapTypeControl(value) {
+                this.maps[index - 1].showsMapTypeControl = value;
+            },
+            get showsZoomControl() {
+                return this.maps[index - 1].showsZoomControl;
+            },
+            set showsZoomControl(value) {
+                this.maps[index - 1].showsZoomControl = value;
+            },
+            get showsUserLocationControl() {
+                return this.maps[index - 1].showsUserLocationControl;
+            },
+            set showsUserLocationControl(value) {
+                this.maps[index - 1].showsUserLocationControl = value;
+            },
+            get showsPointsOfInterest() {
+                return this.maps[index - 1].showsPointsOfInterest;
+            },
+            set showsPointsOfInterest(value) {
+                this.maps[index - 1].showsPointsOfInterest = value;
+            },
+            get tintColor() {
+                return this.maps[index - 1].tintColor;
+            },
+            set tintColor(color) {
+                this.maps[index - 1].tintColor = color;
             }
         };
         options.cb(object);

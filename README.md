@@ -118,7 +118,7 @@ onLoaded(e) {
 After successfully initializatin of the map you are got map object with next methods and params:
 
 ```typescript
-  key: 1 // current map key identifier
+key: 1 // current map key identifier
 isRotationAvailable() // return boolean value
 isRotationEnabled() // return boolean value
 isScrollEnabled() // return boolean value
@@ -131,7 +131,6 @@ getCenter() // return object with coordinates of map center
   }
 */
 setCenterAnimated(latitude: number, longitude: number, animate: boolean = true) // set center of the map
-
 getRegion() // return current map region
 setRegionAnimated(center, span = null, animate = true) //  set region for the current map, center is required param, its the object with latitude: number, longitude: number params
 getRotation() // return current rotation value in degrees
@@ -175,7 +174,12 @@ showItems(annotations, options)
 getAnnotations() // return Promise of annotations
 getSelectedAnnotations() // return selected annotations
 zoom // number, specify zoom for map
-showCompass // 'hidden' | 'adaptive' | 'visible' defulat adaptive
+showsCompass // 'hidden' | 'adaptive' | 'visible' defulat adaptive
+showsMapTypeControl // BETA
+showsZoomControl // BETA
+showsUserLocationControl // BETA
+showsPointsOfInterest // BETA
+tintColor // BETA
 ```
 
 ### MapConstructorOptions
