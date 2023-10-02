@@ -6,13 +6,19 @@
 [![license](https://img.shields.io/npm/l/ngx-apple-mapkit.svg)](https://github.com/webtimo-de/ngx-apple-mapkit/blob/master/LICENSE)
 
 
-## Install
+## Install 🌐
 
 ```shell
 npm install ngx-apple-mapkit
 ```
 
-## Before you start
+## Demo ‍🧑‍💻
+
+You can test it here:
+
+https://projects.web-timo.de/preview/ngx-apple-mapkit
+
+## Before you start  👀
 
 [Generating JWT token](https://developer.apple.com/documentation/mapkitjs/creating_and_using_tokens_with_mapkit_js?changes=latest_minor)
 
@@ -23,13 +29,13 @@ For generating you need:
 - MapKit key ID
 - MapKit Private key
 
-## Get started
+## Get started 🔥
 
 1. Add to the `index.html` script including
    `<script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>`
 2. Add `AppleMapsModule` to imports in your `app.module.ts`
 
-## Map(s) creation
+## Map(s) creation ✅
 
 1. Define `options: MapKitInitOptions` in your `*.component.ts`
    file (have to look on [**MapKitInitOptions**](###mapkitinitoptions))
@@ -83,7 +89,7 @@ You can pass elements or component into annotation
 
 ### MapKitInitOptions
 
-Description of them https://developer.apple.com/documentation/mapkitjs/mapkit/map
+Description of them [Documentation](https://developer.apple.com/documentation/mapkitjs/mapkit/map)
 
 ```typescript
 const options: MapKitInitOptions = {
@@ -358,13 +364,13 @@ interface GeocoderReverseLookupOptionsInterface {
 }
 ```
 
-## Angular universal
+## Angular Universal
 
 Map don't rendering on the server side, all methods unavailable.
 
 ---
 
-## ngx-apple-maps
+## ngx-apple-maps ❤️
 
 This is a renewed variant of the [ngx-apple-maps](https://github.com/ihor-zinchenko/ngx-apple-maps). This runs on
 Angular 16 and Ivy. I personally use the library, and it is therefore regularly maintained.
