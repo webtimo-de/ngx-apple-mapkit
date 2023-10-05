@@ -108,7 +108,6 @@ const options: MapKitInitOptions = {
 Created map getting from the `getting from options: MapKitInitOptions` **callback** response
 
 ```angular2html
-
 <ngx-apple-mapkit-annotation
         [latitude]="latitude"
         [longitude]="longitude"
