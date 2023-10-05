@@ -1,5 +1,5 @@
 import { MapConstructorOptions, MapKitInitOptions, MapKitLoaded } from "./declarations";
-import { mapkit } from "./mapkit";
+import { MapKit } from "./mapkit";
 import * as i0 from "@angular/core";
 declare global {
     interface Window {
@@ -9,11 +9,11 @@ declare global {
 export declare class AppleMapsService {
     private platformId;
     isBrowser: boolean;
-    maps: mapkit.Map[];
+    maps: MapKit.Map[];
     mapsQueue: any[];
     initialized: string;
     annotations: {
-        [s: number]: mapkit.Annotation[];
+        [s: number]: MapKit.Annotation[];
     };
     private options;
     location: any;

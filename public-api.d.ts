@@ -1,3 +1,5 @@
+/// <reference path="lib/declarations.d.ts" />
+/// <reference path="lib/mapkit.d.ts" />
 export * from './lib/apple-maps.service';
 export * from './lib/services/geocoder/apple-maps-geocoder.service';
 export * from './lib/services/search/apple-maps-search.service';

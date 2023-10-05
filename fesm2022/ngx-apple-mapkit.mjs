@@ -697,19 +697,20 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImpor
                 }]
         }] });
 
-var mapkit;
-(function (mapkit) {
-})(mapkit || (mapkit = {}));
+var MapKit;
+(function (MapKit) {
+})(MapKit || (MapKit = {}));
+const mapkit = window.mapkit;
 
 /*
  * Public API Surface of ngx-apple-mapkit
  */
-// <reference path="./lib/declarations.ts" />
-// <reference path="./lib/mapkit.ts" />
+/// <reference path="./lib/declarations.ts" />
+/// <reference path="./lib/mapkit.ts" />
 
 /**
  * Generated bundle index. Do not edit.
  */
 
-export { AppleMapkitAnnotationComponent, AppleMapkitComponent, AppleMapsGeocoderService, AppleMapsModule, AppleMapsSearchService, AppleMapsService, mapkit };
+export { AppleMapkitAnnotationComponent, AppleMapkitComponent, AppleMapsGeocoderService, AppleMapsModule, AppleMapsSearchService, AppleMapsService, MapKit, mapkit };
 //# sourceMappingURL=ngx-apple-mapkit.mjs.map

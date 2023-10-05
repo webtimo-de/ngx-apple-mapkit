@@ -291,7 +291,7 @@ const annotationOptions: AnnotationConstructorOptionsInterface = {
 From version **0.0.24** you can use typed `mapkit.js`.
 
 ```typescript
-import {mapkit} from 'ngx-apple-mapkit';
+import {MapKit, mapkit} from 'ngx-apple-mapkit';
 ```
 
 ```typescript
@@ -299,7 +299,7 @@ class NgxAppleMapkitComponent {
     // ...
     onLoaded(e: MapKitLoaded) {
         this.map = e;
-        const map: mapkit.Map = e.map;
+        const map: MapKit.Map = e.map;
 
         const people = [
             {
@@ -320,6 +320,10 @@ class NgxAppleMapkitComponent {
     // ...
 }
 ```
+
+`MapKit`: Typed Namespace.
+
+`mapkit`: Basically the window.mapkit but with `MapKit` Type.
 
 ## Other
 

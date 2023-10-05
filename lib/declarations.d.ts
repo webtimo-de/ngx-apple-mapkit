@@ -1,4 +1,4 @@
-import { mapkit } from "./mapkit";
+import { MapKit } from "./mapkit";
 export declare interface CoordinatesInterface {
     latitude: number;
     longitude: number;
@@ -62,15 +62,15 @@ export declare interface MapKitGetCameraZoomRange {
     minCameraDistance: number;
     maxCameraDistance: number;
 }
-export declare type MapKitItem = mapkit.Annotation | mapkit.Overlay;
-export declare type MapKitAnnotation = mapkit.Annotation;
-export declare interface MapKitGetSelectedAnnotations extends mapkit.Annotation {
+export declare type MapKitItem = MapKit.Annotation | MapKit.Overlay;
+export declare type MapKitAnnotation = MapKit.Annotation;
+export declare interface MapKitGetSelectedAnnotations extends MapKit.Annotation {
     _impl: any;
 }
 export declare interface MapKitLoaded {
     key: number;
-    map: mapkit.Map;
-    addEventListener<T, K extends keyof mapkit.MapEvents<this>>(type: K, listener: (this: T, event: mapkit.MapEvents<this>[K]) => void, thisObject?: T): void;
+    map: MapKit.Map;
+    addEventListener<T, K extends keyof MapKit.MapEvents<this>>(type: K, listener: (this: T, event: MapKit.MapEvents<this>[K]) => void, thisObject?: T): void;
     isRotationAvailable: () => boolean;
     isRotationEnabled: () => boolean;
     isScrollEnabled: () => boolean;

@@ -1,4 +1,4 @@
-export declare namespace mapkit {
+export declare namespace MapKit {
     /**
      * Initialize a mapkit object by providing an authorization callback and language.
      */
@@ -2696,3 +2696,4 @@ export declare namespace mapkit {
         items: Array<Annotation | Overlay | ItemCollection>;
     }
 }
+export declare const mapkit: (typeof MapKit);
