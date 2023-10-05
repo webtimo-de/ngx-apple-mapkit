@@ -697,6 +697,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImpor
                 }]
         }] });
 
+var mapkit;
+(function (mapkit) {
+})(mapkit || (mapkit = {}));
+
 /*
  * Public API Surface of ngx-apple-mapkit
  */
@@ -707,5 +711,5 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImpor
  * Generated bundle index. Do not edit.
  */
 
-export { AppleMapkitAnnotationComponent, AppleMapkitComponent, AppleMapsGeocoderService, AppleMapsModule, AppleMapsSearchService, AppleMapsService };
+export { AppleMapkitAnnotationComponent, AppleMapkitComponent, AppleMapsGeocoderService, AppleMapsModule, AppleMapsSearchService, AppleMapsService, mapkit };
 //# sourceMappingURL=ngx-apple-mapkit.mjs.map

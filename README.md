@@ -20,7 +20,7 @@ https://projects.web-timo.de/preview/ngx-apple-mapkit
 
 [Generating JWT token](https://developer.apple.com/documentation/mapkitjs/creating_and_using_tokens_with_mapkit_js?changes=latest_minor)
 
-For generating you need:
+For generating, you need:
 
 - Team ID
 - Maps ID
@@ -45,7 +45,6 @@ For generating you need:
 Insert into `ngx-apple-mapkit` tag following code:
 
 ```angular2html
-
 <ngx-apple-mapkit-annotation
         [latitude]="latitude"
         [longitude]="longitude"
@@ -55,7 +54,6 @@ Insert into `ngx-apple-mapkit` tag following code:
 **OR**
 
 ```angular2html
-
 <ngx-apple-mapkit-annotation
         *ngFor="const annotation of annotations"
         [latitude]="annotation.latitude"
@@ -68,7 +66,6 @@ Insert into `ngx-apple-mapkit` tag following code:
 You can provide additional `annotationOptions: AnnotationConstructorOptionsInterface` param for each annotation
 
 ```angular2html
-
 <ngx-apple-mapkit-annotation
         [latitude]="latitude"
         [longitude]="longitude"
@@ -79,7 +76,6 @@ You can provide additional `annotationOptions: AnnotationConstructorOptionsInter
 You can pass elements or component into annotation
 
 ```angular2html
-
 <ngx-apple-mapkit-annotation
         [latitude]="latitude"
         [longitude]="longitude"
@@ -124,100 +120,63 @@ onLoaded(e)
 }
 ```
 
-After successfully initializatin of the map you are got map object with next methods and params:
+After successful initialization of the map, you are got map object with next methods and params:
 
 ```typescript
-key: 1 // current map key identifier
-isRotationAvailable() // return boolean value
-isRotationEnabled() // return boolean value
-isScrollEnabled() // return boolean value
-isZoomEnabled() // return boolean value
-getCenter() // return object with coordinates of map center
-/*
-  {
-    latitude: 1,
-    longitude: 1,
-  }
-*/
-setCenterAnimated(latitude
-:
-number, longitude
-:
-number, animate
-:
-boolean = true
-) // set center of the map
-getRegion() // return current map region
-setRegionAnimated(center, span = null, animate = true) //  set region for the current map, center is required param, its the object with latitude: number, longitude: number params
-getRotation() // return current rotation value in degrees
-setRotationAnimated(degrees, animate = true) // set rotation to passed value
-getCameraDistance() // return current camera distance
-setCameraDistanceAnimated(distance
-:
-number, animate
-:
-boolean = true
-)
-getCameraZoomRange() // return available zoom range for the current map
-// More about cameraZoomRange https://developer.apple.com/documentation/mapkitjs/mapkit/camerazoomrange?changes=latest_minor
-setCameraZoomRangeAnimated(minCameraDistance, maxCameraDistance, animate
-:
-boolean = true
-)
-getColorScheme() // return current color scheme (light or dark)
-setColorScheme(scheme = 'light') // set color scheme (light or dark)
-getDistances()
-setDistances() // 'metric' | 'imperial' | 'adaptive'
-getMapType() // return 'standard' | 'mutedStandard' | 'hybrid' | 'satellite'
-setMapType() // 'standard' | 'mutedStandard' | 'hybrid' | 'satellite'
-getPadding() // return current padding
-setPadding(padding) // pass object {top: 0, left: 0, right: 0, bottom: 0}
-getShowsMapTypeControl()
-setShowsMapTypeControl(value
-:
-boolean
-) // show or hide map type control
-getShowsZoomControl()
-setShowsZoomControl(value
-:
-boolean
-) // show or hide map zoom controls
-getShowsUserLocationControl()
-setShowsUserLocationControl(value
-:
-boolean
-) // show or hide Shows user location controls
-getShowsPointsOfInterest()
-setShowsPointsOfInterest(value
-:
-boolean
-) // show or hide places on the map
-getShowsScale()
-setShowsScale()
-getTintColor()
-setTintColor(color
-:
-string
-)
-showItems(annotations, options)
-// Zoom to passed annotation, can be Array of annoations or single annotation
-// You can get created annotations from getAnnotations() function
-// options - object
-/*
-  options = {
-      animate: true, // optional, default true
-      padding: {top: 20} // left right bottom, optional
-      span: {from: 0, to: 1} // optional
-  }
-*/
-getAnnotations() // return Promise of annotations
-getSelectedAnnotations() // return selected annotations
-showsCompass // 'hidden' | 'adaptive' | 'visible' defulat adaptive
-showsMapTypeControl // BETA
-showsZoomControl // BETA
-showsUserLocationControl // BETA
-showsPointsOfInterest // BETA
-tintColor // BETA
+export interface MapKitLoaded {
+    key: number;
+    map: mapkit.Map;
+
+    addEventListener<T, K extends keyof mapkit.MapEvents<this>>(
+        type: K,
+        listener: (this: T, event: mapkit.MapEvents<this>[K]) => void,
+        thisObject?: T
+    ): void;
+
+    isRotationAvailable: () => boolean;
+    isRotationEnabled: () => boolean;
+    isScrollEnabled: () => boolean;
+    isZoomEnabled: () => boolean;
+    getCenter: () => CoordinatesInterface;
+    setCenterAnimated: (latitude: number, longitude: number, animate?: boolean) => void;
+    getRegion: () => MapKitRegion;
+    setRegionAnimated: (center: CoordinatesInterface, span?: SpanInterface, animate?: boolean) => void;
+    getRotation: () => number;
+    setRotationAnimated: (degrees: number, animate?: boolean) => void;
+    getCameraDistance: () => number;
+    setCameraDistanceAnimated: (distance: number, animate?: boolean) => void;
+    getCameraZoomRange: () => MapKitGetCameraZoomRange;
+    setCameraZoomRangeAnimated: (minCameraDistance: number, maxCameraDistance: number, animate?: boolean) => void;
+    getColorScheme: () => SchemeString | string;
+    setColorScheme: (scheme: SchemeString) => void;
+    getDistances: () => DistancesString;
+    setDistances: (distance: DistancesString) => void;
+    getMapType: () => MapTypeString;
+    setMapType: (type: MapTypeString) => void;
+    getPadding: () => PaddingInterface;
+    setPadding: (padding: PaddingInterface) => void;
+    getShowsMapTypeControl: () => boolean;
+    setShowsMapTypeControl: (value: boolean) => void;
+    getShowsZoomControl: () => boolean;
+    setShowsZoomControl: (value: boolean) => void;
+    getShowsUserLocationControl: () => boolean;
+    setShowsUserLocationControl: (value: boolean) => void;
+    getShowsPointsOfInterest: () => boolean;
+    setShowsPointsOfInterest: (value: boolean) => void;
+    getShowsScale: () => ShowsScaleString;
+    setShowsScale: (padding: ShowsScaleString) => void;
+    getTintColor: () => string;
+    setTintColor: (value: string) => void;
+    showItems: (items: MapKitItem | MapKitItem[], mapShowItemOptions?: MapShowItemOptionsInterface) => void;
+    getAnnotations: () => Promise<MapKitAnnotation[]>;
+    getSelectedAnnotations: () => MapKitGetSelectedAnnotations;
+    showsCompass: MapKitCompass;
+    showsMapTypeControl: boolean;
+    showsZoomControl: boolean;
+    showsUserLocationControl: boolean;
+    showsPointsOfInterest: boolean;
+    tintColor: string;
+}
 ```
 
 #### Zoom
@@ -227,10 +186,12 @@ Since I can't really integrate the zoom. But there is a workaround for this.
 ```typescript
 class NgxAppleMapkitComponent {
     // ...
+   
     onLoaded(e: MapKitLoaded) {
         const map = e.map;
         (map as any)._impl.zoomLevel = 4; // <-- Zoom Level
     }
+
     // ...
 }
 ```
@@ -286,7 +247,7 @@ const settings: MapConstructorOptions = {
 
 ### AnnotationConstructorOptionsInterface
 
-All params is optional
+All params are optional
 
 ```typescript
 const annotationOptions: AnnotationConstructorOptionsInterface = {
@@ -302,7 +263,7 @@ const annotationOptions: AnnotationConstructorOptionsInterface = {
         right: 0,
         bottom: 0,
         left: 0
-    }
+    },
     size: { // The desired dimensions of the annotation, in CSS pixels.
         width: 30,
         height: 30
@@ -323,6 +284,41 @@ const annotationOptions: AnnotationConstructorOptionsInterface = {
     glyphImage: 'some/path/to/image.png',
     selectedGlyphImage: 'some/path/to/selected-annotation-image.png'
 };
+```
+
+## Typed mapkit.js 😎😍
+
+From version **0.0.24** you can use typed `mapkit.js`.
+
+```typescript
+import {mapkit} from 'ngx-apple-mapkit';
+```
+
+```typescript
+class NgxAppleMapkitComponent {
+    // ...
+    onLoaded(e: MapKitLoaded) {
+        this.map = e;
+        const map: mapkit.Map = e.map;
+
+       const people = [
+          {
+             title: "Juan Chavez",
+             coordinate: new mapkit.Coordinate(37.3349, -122.0090201),
+             role: "developer",
+             building: "HQ"
+          },
+          {
+             title: "Anne Johnson",
+             coordinate: new mapkit.Coordinate(37.722319, -122.434979),
+             role: "manager",
+             building: "HQ"
+          }
+       ];
+        
+    }
+    // ...
+}
 ```
 
 ## Other
@@ -433,4 +429,6 @@ Angular 16 and Ivy. I personally use the library, and it is therefore regularly 
 You can find more information in the original project:
 [github.com/ihor-zinchenko/ngx-apple-maps](https://github.com/ihor-zinchenko/ngx-apple-maps/blob/master/README.md)
 
-
+### ⚠️ Important
+As of version **ngx-apple-mapkit@0.0.24**, more significant changes have been made. 
+This has an impact, please pay attention when replacing (or updating)!
