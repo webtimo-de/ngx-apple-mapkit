@@ -270,6 +270,14 @@ class AppleMapsService {
             },
             set tintColor(color) {
                 this.maps[index - 1].tintColor = color;
+            },
+            get zoom() {
+                return this.maps[index - 1]?._impl?.zoomLevel;
+            },
+            set zoom(zoomLevel) {
+                if (this.maps[index - 1]?._impl?.zoomLevel) {
+                    this.maps[index - 1]._impl.zoomLevel = zoomLevel;
+                }
             }
         };
         options.cb(object);
