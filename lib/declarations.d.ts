@@ -114,7 +114,6 @@ export declare interface MapKitLoaded {
     showsUserLocationControl: boolean;
     showsPointsOfInterest: boolean;
     tintColor: string;
-    zoom: number;
 }
 export declare interface MapKitInitOptions {
     language?: string;
