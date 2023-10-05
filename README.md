@@ -42,7 +42,7 @@ For generating, you need:
 
 #### Annotations (markers)
 
-Insert into `ngx-apple-mapkit` tag following code:
+Insert into `ngx-apple-mapkit` tag the following code:
 
 ```angular2html
 <ngx-apple-mapkit-annotation
@@ -301,20 +301,20 @@ class NgxAppleMapkitComponent {
         this.map = e;
         const map: mapkit.Map = e.map;
 
-       const people = [
-          {
-             title: "Juan Chavez",
-             coordinate: new mapkit.Coordinate(37.3349, -122.0090201),
-             role: "developer",
-             building: "HQ"
-          },
-          {
-             title: "Anne Johnson",
-             coordinate: new mapkit.Coordinate(37.722319, -122.434979),
-             role: "manager",
-             building: "HQ"
-          }
-       ];
+        const people = [
+            {
+               title: "Juan Chavez",
+               coordinate: new mapkit.Coordinate(37.3349, -122.0090201),
+               role: "developer",
+               building: "HQ"
+            },
+            {
+               title: "Anne Johnson",
+               coordinate: new mapkit.Coordinate(37.722319, -122.434979),
+               role: "manager",
+               building: "HQ"
+            }
+        ];
         
     }
     // ...
