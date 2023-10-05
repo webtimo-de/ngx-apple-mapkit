@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, DoCheck, EventEmitter, KeyValueDiffers, OnInit, QueryList, ViewContainerRef } from '@angular/core';
-import { MapConstructorOptions, MapKitInitOptions } from "./declarations";
+import { MapConstructorOptions, MapKitInitOptions, MapKitLoaded } from "./declarations";
 import { BehaviorSubject } from "rxjs";
 import { AppleMapsService } from "./apple-maps.service";
 import { AppleMapkitAnnotationComponent } from "./components/apple-mapkit-annotation/apple-mapkit-annotation.component";
@@ -14,7 +14,7 @@ export declare class AppleMapkitComponent implements DoCheck, OnInit, AfterViewI
     logging: boolean;
     language: "en" | "de" | "es" | "it" | "fr" | string;
     height: string;
-    onLoaded: EventEmitter<any>;
+    onLoaded: EventEmitter<MapKitLoaded>;
     private loaded;
     annotations: QueryList<AppleMapkitAnnotationComponent>;
     defaultOptions: {

@@ -1,4 +1,5 @@
-import { MapKitInitOptions } from "./declarations";
+import { MapConstructorOptions, MapKitInitOptions, MapKitLoaded } from "./declarations";
+import { mapkit } from "./mapkit";
 import * as i0 from "@angular/core";
 declare global {
     interface Window {
@@ -8,19 +9,21 @@ declare global {
 export declare class AppleMapsService {
     private platformId;
     isBrowser: boolean;
-    maps: any[];
+    maps: mapkit.Map[];
     mapsQueue: any[];
     initialized: string;
-    annotations: {};
+    annotations: {
+        [s: number]: mapkit.Annotation[];
+    };
     private options;
     location: any;
     region: any;
     center: any;
     constructor(platformId: Object);
     private static settingsLoadedTransform;
-    init(options: MapKitInitOptions, settings?: any, cb?: (data: any) => void): void;
+    init(options: MapKitInitOptions, settings?: MapConstructorOptions, cb?: (data: MapKitLoaded) => void): void;
     private createMaps;
-    createMap(element: any): void;
+    createMap(element: HTMLElement): void;
     private addMapInitOptionsListeners;
     getUserLocation(timeout?: number): Promise<unknown>;
     optionsChanged(changes: any): void;

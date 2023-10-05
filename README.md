@@ -179,7 +179,6 @@ showItems(annotations, options)
 */
 getAnnotations() // return Promise of annotations
 getSelectedAnnotations() // return selected annotations
-zoom // number, specify zoom for map
 showsCompass // 'hidden' | 'adaptive' | 'visible' defulat adaptive
 showsMapTypeControl // BETA
 showsZoomControl // BETA

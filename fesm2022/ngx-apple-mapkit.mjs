@@ -55,7 +55,7 @@ class AppleMapsService {
                 authorizationCallback: (done) => {
                     done(options.JWT);
                 },
-                language: this.options.language
+                language: options.language
             });
             this.addMapInitOptionsListeners(options);
         }
@@ -74,17 +74,15 @@ class AppleMapsService {
     }
     createMap(element) {
         const options = this.mapsQueue.shift();
-        // noinspection TypeScriptValidateJSTypes
         const index = this.maps.push(new window.mapkit.Map(element, AppleMapsService.settingsLoadedTransform(options.settings)));
         const object = {
             key: index - 1,
             map: this.maps[index - 1],
-            addEventListener: (type, cb, context) => {
-                if (!type || !cb) {
+            addEventListener: (type, listener, context) => {
+                if (!type || !listener) {
                     throw new Error('Type and listener are required');
-                    return;
                 }
-                return this.maps[index - 1].addEventListener(type, cb, context);
+                return this.maps[index - 1].addEventListener(type, listener, context);
             },
             isRotationAvailable: () => {
                 return this.maps[index - 1].isRotationAvailable;
@@ -236,12 +234,6 @@ class AppleMapsService {
             },
             getSelectedAnnotations: () => {
                 return this.maps[index - 1].selectedAnnotation;
-            },
-            set zoom(value) {
-                this.maps[index - 1]._impl.zoomLevel = value;
-            },
-            get zoom() {
-                return this.maps[index - 1]._impl.zoomLevel;
             },
             set showsCompass(value) {
                 this.maps[index - 1].showsCompass = value;
@@ -709,6 +701,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.2.3", ngImpor
  * Public API Surface of ngx-apple-mapkit
  */
 // <reference path="./lib/declarations.ts" />
+// <reference path="./lib/mapkit.ts" />
 
 /**
  * Generated bundle index. Do not edit.
