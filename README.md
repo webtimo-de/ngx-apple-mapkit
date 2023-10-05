@@ -185,7 +185,7 @@ showsZoomControl // BETA
 showsUserLocationControl // BETA
 showsPointsOfInterest // BETA
 tintColor // BETA
-zoom // number 
+zoom // number / BETA
 ```
 
 ### MapConstructorOptions
