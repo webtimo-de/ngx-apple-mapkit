@@ -18,6 +18,8 @@ https://projects.web-timo.de/preview/ngx-apple-mapkit
 
 ## Before you start 👀
 
+[Apple mapkit.js Documentation](https://developer.apple.com/documentation/mapkitjs/mapkit/map)
+
 [Generating JWT token](https://developer.apple.com/documentation/mapkitjs/creating_and_using_tokens_with_mapkit_js?changes=latest_minor)
 
 For generating, you need:
@@ -35,101 +37,133 @@ For generating, you need:
 
 ## Map(s) creation ✅
 
-1. Define `options: MapKitInitOptions` in your `*.component.ts`
-   file (have to look on [**MapKitInitOptions**](###mapkitinitoptions))
-2. Define `settings: MapConstructorOptions` (optional) (have to loon on MapConstructorOptions)
+1. Define `options: MapKitInitOptions` in your `*.component.ts` file
+2. Define `settings: MapConstructorOptions`
 3. Add `<ngx-apple-mapkit [options]="options" [settings]="settings"></ngx-apple-mapkit>` in your `*.component.html`
 
-#### Annotations (markers)
+# Usage
 
-Insert into `ngx-apple-mapkit` tag the following code:
+## Map
 
-```angular2html
-<ngx-apple-mapkit-annotation
-        [latitude]="latitude"
-        [longitude]="longitude"
-></ngx-apple-mapkit-annotation>
+To start the map, the `ngx-apple-mapkit` must be described in the HTML component.
+
+```html
+<ngx-apple-mapkit (onLoaded)="onLoaded($event)"
+                  *ngIf="options && settings"
+                  [options]="options" [settings]="settings">
+</ngx-apple-mapkit>
 ```
-
-**OR**
-
-```angular2html
-<ngx-apple-mapkit-annotation
-        *ngFor="const annotation of annotations"
-        [latitude]="annotation.latitude"
-        [longitude]="annotation.longitude"
-></ngx-apple-mapkit-annotation>
-```
-
-`latitude` and `longitude` is **required**.
-
-You can provide additional `annotationOptions: AnnotationConstructorOptionsInterface` param for each annotation
-
-```angular2html
-<ngx-apple-mapkit-annotation
-        [latitude]="latitude"
-        [longitude]="longitude"
-        [options]="annotationOptions"
-></ngx-apple-mapkit-annotation>
-```
-
-You can pass elements or component into annotation
-
-```angular2html
-<ngx-apple-mapkit-annotation
-        [latitude]="latitude"
-        [longitude]="longitude"
-        [options]="annotationOptions"
->
-    <div>Styled div or component with any content</div>
-</ngx-apple-mapkit-annotation>
-```
-
-### MapKitInitOptions
-
-Description of them [Documentation](https://developer.apple.com/documentation/mapkitjs/mapkit/map)
 
 ```typescript
-const options: MapKitInitOptions = {
-    language: 'en', // default browser language
-    callback: (data) => {
-        // return map event
-    },
-    JWT: string // Json Web token
+export class NgxAppleMapkitComponent implements OnInit, OnDestroy {
+    public settings: MapConstructorOptions;
+    public options: MapKitInitOptions;
+    private map: MapKitLoaded;
+
+    // ...
+
+    ngOnInit(): void {
+        const token: string = "YOUR_TOKEN";
+        this.initMapkit(token);
+    }
+
+    // ...
+
+    private initMapkit(token: string) {
+        const dark: boolean = this.themeService.isDark;
+
+        const home = {
+            latitude: 51.68,
+            longitude: 7.86
+        };
+
+        this.settings = {
+            colorScheme: dark ? "dark" : "light",
+            isZoomEnabled: true,
+            showsZoomControl: true,
+            showsUserLocationControl: false,
+            showsMapTypeControl: true,
+            showsUserLocation: false,
+            tracksUserLocation: false,
+            isScrollEnabled: true,
+            mapType: "standard",
+            center: home,
+            isRotationEnabled: true,
+            region: {
+                center: home,
+                span: {
+                    from: 0.050, // Zoom
+                    to: 0.050 // Zoom
+                }
+            }
+        };
+
+        this.options = {
+            JWT: token, // <-- Here your MapKit Token
+            language: window.navigator.language,
+            callback: (data: any) => {
+                console.log('data ', data);
+            }
+        };
+    }
+
+    onLoaded(e: MapKitLoaded) {
+        this.map = e;
+    }
+
+    ngOnDestroy(): void {
+        this.map?.map?.destroy();
+    }
 }
 ```
 
-### Created map changes
+| Parameter  | Typ                                             | Use                              | Default | Required |
+| ---------- | ----------------------------------------------- | -------------------------------- | ------- | -------- |
+| [options]  | MapKitInitOptions                               | Needed for Token and Init Option | -       | ✅        |
+| [settings] | MapConstructorOptions                           | Settings for Apple Maps          | -       | ✅        |
+| [logging]  | boolean                                         | For Development                  | false   | ❌        |
+| [language] | "en" \| "de" \| "es" \| "it" \|  "fr" \| string | Set Language                     | "en"    | ❌        |
+| (onLoaded) | (event: MapKitLoaded) => void;                  | Return Map                       | -       | ❎        |
 
-Created map getting from the `getting from options: MapKitInitOptions` **callback** response
+### Set MapKit Token
 
-```angular2html
+As you can see from the previous code examples, the token is set in `options`.
+
+```typescript
+this.options = {
+    JWT: token, // <-- Here your MapKit Token
+    language: window.navigator.language,
+    callback: (data: any) => {
+        console.log('data ', data);
+    }
+};
+```
+
+### Control MapKit
+
+With the `ngx-apple-mapkit`, you get an object back via the onLoaded that contains the map and some pre-built functions.
+
+```html
 <ngx-apple-mapkit-annotation
-        [latitude]="latitude"
-        [longitude]="longitude"
+        ...
         (onLoaded)="onLoaded($event)"
 ></ngx-apple-mapkit-annotation>
 ```
 
-In your `*.component.ts` file
-
 ```typescript
-onLoaded(e)
-{
+function onLoaded(e: MapKitLoaded) {
     this.map = e;
 }
 ```
 
-After successful initialization of the map, you are got map object with next methods and params:
-
 ```typescript
-export interface MapKitLoaded {
+export declare interface MapKitLoaded {
     key: number;
-    map: mapkit.Map;
+    map: MapKit.Map; // <-- Native mapkit.js Map
 
-    addEventListener<T, K extends keyof mapkit.MapEvents<this>>(
+    addEventListener<T, K extends keyof MapKit.MapEvents<this>>(
         type: K,
-        listener: (this: T, event: mapkit.MapEvents<this>[K]) => void,
+        listener: (this: T, event: MapKit.MapEvents<this>[K]) => void,
         thisObject?: T
     ): void;
 
@@ -186,9 +220,9 @@ Since I can't really integrate the zoom. But there is a workaround for this.
 ```typescript
 class NgxAppleMapkitComponent {
     // ...
-   
+
     onLoaded(e: MapKitLoaded) {
-        const map = e.map;
+        const map: MapKit.Map = e.map;
         (map as any)._impl.zoomLevel = 4; // <-- Zoom Level
     }
 
@@ -196,99 +230,46 @@ class NgxAppleMapkitComponent {
 }
 ```
 
-```angular2html
-<ngx-apple-mapkit (onLoaded)="onLoaded($event)"
-                  [options]="options" [settings]="settings">
+## Annotations (Markers)
+
+```html
+<ngx-apple-mapkit ...>
+   <ngx-apple-mapkit-annotation
+           [options]="{title: 'Timo Köhler', subtitle: 'web-timo.de', glyphText: '🧑‍💻', selected: true}"
+           (onSelect)="onSelect($event)"
+           (onDeselect)="onDeselect($event)"
+           [latitude]="51.68"
+           [longitude]="7.86"
+   ></ngx-apple-mapkit-annotation>
 </ngx-apple-mapkit>
 ```
 
-### MapConstructorOptions
+| Parameter    | Typ                                   | Use                                                     | Required |
+| ------------ | ------------------------------------- | ------------------------------------------------------- | -------- |
+| [options]    | AnnotationConstructorOptionsInterface | For example, name, subtitle or icon are specified there | ✅        |
+| [latitude]   | number                                | Latitude                                                | ✅        |
+| [longitude]  | number                                | Longitude                                               | ✅        |
+| (onSelect)   | (event: any) => void;                 | This is triggered when the user clicks on the marker    | ❌        |
+| (onDeselect) | (event: any) => void;                 | This is triggered when the user leaves the marker       | ❌        |
 
-All options are optional
+### Custom Selected Marker
 
-```typescript
-const settings: MapConstructorOptions = {
-    region: {
-        center: {
-            latitude: 37.3316850890998,
-            longitude: -122.030067374026
-        },
-        span: { // https://developer.apple.com/documentation/mapkitjs/mapkit/coordinatespan/2973870-mapkit_coordinatespan
-            from: 0,
-            to: 1
-        }
-    },
-    center: { // center of the map
-        latitude: 37.3316850890998,
-        longitude: -122.030067374026
-    },
-    rotation: 45, // degrees
-    tintColor: '#000', // color of map controls
-    colorScheme: 'light', // light or dark, for default it's the browser color cheme
-    mapType: 'standart', // 'mutedStandard' | 'standard' | 'satellite' | 'hybrid'
-    padding: { // map padding
-        top: 10,
-        right: 10,
-        bottom: 0,
-        left: 0
-    },
-    showsMapTypeControl: true, // is show mapType control on the map
-    isRotationEnabled: true,
-    showsCompass: 'adaptive', // 'adaptive' (showing always and on the touch screen devices hides if rotationElabled: false and rotation: 0) | 'hidden' | 'visible'
-    isZoomEnabled: true, // is zoom available
-    showsZoomControl: true,
-    isScrollEnabled: true, // A Boolean value that determines whether the user may scroll the map with a pointing device or with gestures on a touchscreen.
-    showsScale: 'adaptive', // 'adaptive' | 'hidden' | 'visible' https://developer.apple.com/documentation/mapkitjs/mapkit/map/2973941-showsscale?changes=latest_minor
-    showsUserLocation: false,
-    tracksUserLocation: false,
-    showsUserLocationControl: true
-}
-```
-
-### AnnotationConstructorOptionsInterface
-
-All params are optional
-
-```typescript
-const annotationOptions: AnnotationConstructorOptionsInterface = {
-    data: { // object with your custom data 
-        anyData: "anyValue"
-    },
-    title: "Annotation Title",
-    subtitle: "Annotation Subtitle",
-    appearanceAnimation: "", // A CSS animation that runs when the annotation appears on the map.
-    displayPriority: 1000, // A numeric hint the map uses to prioritize displaying annotations. From 0 to 1000
-    padding: { // Spacing added around the annotation when showing items.
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
-    },
-    size: { // The desired dimensions of the annotation, in CSS pixels.
-        width: 30,
-        height: 30
-    },
-    visible: true,
-    animates: true, // A Boolean value that determines if the annotation should be animated.
-    draggable: false,
-    enabled: true,
-    selected: false,
-    calloutEnabled: true, // A Boolean value that determines whether an annotation's callout should be shown.
-    clusteringIdentifier: null, // String - An identifer used for grouping annotations into the same cluster.
-    // More about clusteringIdentifier - https://developer.apple.com/documentation/mapkitjs/mapkit/annotation/2991317-clusteringidentifier?changes=latest_minor
-    collisionMode: 'rectangle', // 'rectangle' | 'circle'
-    accessibilityLabel: '', // Accessibility text for the annotation.
-    color: '#000', // Any CSS color
-    glyphText: '$', // Annotation icon on the map
-    glyphColor: '#000', // Any CSS color
-    glyphImage: 'some/path/to/image.png',
-    selectedGlyphImage: 'some/path/to/selected-annotation-image.png'
-};
+```html
+<ngx-apple-mapkit ...>
+    <ngx-apple-mapkit-annotation ...>
+        <div style="background-color: white; padding: 10px; border-radius: 10px; color: red">
+            Timo Köhler
+        </div>
+    </ngx-apple-mapkit-annotation>
+</ngx-apple-mapkit>
 ```
 
 ## Typed mapkit.js 😎😍
 
 From version **0.0.24** you can use typed `mapkit.js`.
+
+This makes it much easier for them to find and use functions themselves rather than having to constantly try them out. 
+Thanks to IDE.
 
 ```typescript
 import {MapKit, mapkit} from 'ngx-apple-mapkit';
@@ -303,20 +284,21 @@ class NgxAppleMapkitComponent {
 
         const people = [
             {
-               title: "Juan Chavez",
-               coordinate: new mapkit.Coordinate(37.3349, -122.0090201),
-               role: "developer",
-               building: "HQ"
+                title: "Juan Chavez",
+                coordinate: new mapkit.Coordinate(37.3349, -122.0090201),
+                role: "developer",
+                building: "HQ"
             },
             {
-               title: "Anne Johnson",
-               coordinate: new mapkit.Coordinate(37.722319, -122.434979),
-               role: "manager",
-               building: "HQ"
+                title: "Anne Johnson",
+                coordinate: new mapkit.Coordinate(37.722319, -122.434979),
+                role: "manager",
+                building: "HQ"
             }
         ];
-        
+
     }
+
     // ...
 }
 ```
@@ -325,9 +307,11 @@ class NgxAppleMapkitComponent {
 
 `mapkit`: Basically the window.mapkit but with `MapKit` Type.
 
-## Other
+## Service
 
-For using api without map you should initializate API using **AppleMapsService**
+> 🛈 I will make these `Service` functions capable of TypeScript in the coming updates. This is another old circumstance from the predecessor `ngx-apple-maps`
+
+For using api without map you should initialize API using **AppleMapsService**
 
 1. Init mapkit js using `AppleMapsService`
 
@@ -387,7 +371,7 @@ const options = {  // optional
         center: {
             latitude: number,
             longitude: number,
-        };
+        },
         span: {
             from: number,
             to: number,
@@ -425,6 +409,8 @@ Map don't rendering on the server side, all methods unavailable.
 
 ---
 
+# Info
+
 ## ngx-apple-maps ❤️
 
 This is a renewed variant of the [ngx-apple-maps](https://github.com/ihor-zinchenko/ngx-apple-maps). This runs on
@@ -433,6 +419,7 @@ Angular 16 and Ivy. I personally use the library, and it is therefore regularly 
 You can find more information in the original project:
 [github.com/ihor-zinchenko/ngx-apple-maps](https://github.com/ihor-zinchenko/ngx-apple-maps/blob/master/README.md)
 
-### ⚠️ Important
-As of version **ngx-apple-mapkit@0.0.24**, more significant changes have been made. 
-This has an impact, please pay attention when replacing (or updating)!
+## ⚠️ Important
+
+As of version **ngx-apple-mapkit@0.0.24**, more significant changes have been made.
+This has an impact, please pay attention when replacing or updating!

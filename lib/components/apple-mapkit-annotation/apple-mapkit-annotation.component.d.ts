@@ -1,4 +1,4 @@
-import { DoCheck, ElementRef, KeyValueDiffers, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { DoCheck, ElementRef, EventEmitter, KeyValueDiffers, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { AnnotationConstructorOptionsInterface } from '../../declarations';
 import { AppleMapsService } from "../../apple-maps.service";
 import { AppleMapkitComponent } from "../../apple-mapkit.component";
@@ -10,6 +10,8 @@ export declare class AppleMapkitAnnotationComponent implements OnInit, DoCheck, 
     private renderer;
     private parent;
     options: AnnotationConstructorOptionsInterface;
+    onSelect: EventEmitter<any>;
+    onDeselect: EventEmitter<any>;
     set latitude(value: number);
     get latitude(): number;
     set longitude(value: number);
@@ -33,5 +35,5 @@ export declare class AppleMapkitAnnotationComponent implements OnInit, DoCheck, 
     private optionsChanged;
     ngOnDestroy(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AppleMapkitAnnotationComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AppleMapkitAnnotationComponent, "ngx-apple-mapkit-annotation", never, { "options": { "alias": "options"; "required": false; }; "latitude": { "alias": "latitude"; "required": false; }; "longitude": { "alias": "longitude"; "required": false; }; }, {}, never, ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AppleMapkitAnnotationComponent, "ngx-apple-mapkit-annotation", never, { "options": { "alias": "options"; "required": true; }; "latitude": { "alias": "latitude"; "required": true; }; "longitude": { "alias": "longitude"; "required": true; }; }, { "onSelect": "onSelect"; "onDeselect": "onDeselect"; }, never, ["*"], false, never>;
 }
