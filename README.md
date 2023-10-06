@@ -118,7 +118,7 @@ export class NgxAppleMapkitComponent implements OnInit, OnDestroy {
 ```
 
 | Parameter  | Typ                                             | Use                              | Default | Required |
-| ---------- | ----------------------------------------------- | -------------------------------- | ------- | -------- |
+|------------|-------------------------------------------------|----------------------------------|---------|----------|
 | [options]  | MapKitInitOptions                               | Needed for Token and Init Option | -       | ✅        |
 | [settings] | MapConstructorOptions                           | Settings for Apple Maps          | -       | ✅        |
 | [logging]  | boolean                                         | For Development                  | false   | ❌        |
@@ -234,18 +234,18 @@ class NgxAppleMapkitComponent {
 
 ```html
 <ngx-apple-mapkit ...>
-   <ngx-apple-mapkit-annotation
-           [options]="{title: 'Timo Köhler', subtitle: 'web-timo.de', glyphText: '🧑‍💻', selected: true}"
-           (onSelect)="onSelect($event)"
-           (onDeselect)="onDeselect($event)"
-           [latitude]="51.68"
-           [longitude]="7.86"
-   ></ngx-apple-mapkit-annotation>
+    <ngx-apple-mapkit-annotation
+            [options]="{title: 'Timo Köhler', subtitle: 'web-timo.de', glyphText: '🧑‍💻', selected: true}"
+            (onSelect)="onSelect($event)"
+            (onDeselect)="onDeselect($event)"
+            [latitude]="51.68"
+            [longitude]="7.86"
+    ></ngx-apple-mapkit-annotation>
 </ngx-apple-mapkit>
 ```
 
 | Parameter    | Typ                                   | Use                                                     | Required |
-| ------------ | ------------------------------------- | ------------------------------------------------------- | -------- |
+|--------------|---------------------------------------|---------------------------------------------------------|----------|
 | [options]    | AnnotationConstructorOptionsInterface | For example, name, subtitle or icon are specified there | ✅        |
 | [latitude]   | number                                | Latitude                                                | ✅        |
 | [longitude]  | number                                | Longitude                                               | ✅        |
@@ -268,7 +268,7 @@ class NgxAppleMapkitComponent {
 
 From version **0.0.24** you can use typed `mapkit.js`.
 
-This makes it much easier for them to find and use functions themselves rather than having to constantly try them out. 
+This makes it much easier for them to find and use functions themselves rather than having to constantly try them out.
 Thanks to IDE.
 
 ```typescript
@@ -406,6 +406,8 @@ interface GeocoderReverseLookupOptionsInterface {
 ## Angular Universal
 
 Map don't rendering on the server side, all methods unavailable.
+
+Tip: You can use the Native mapkit.js
 
 # Info
 
