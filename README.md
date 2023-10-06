@@ -407,8 +407,6 @@ interface GeocoderReverseLookupOptionsInterface {
 
 Map don't rendering on the server side, all methods unavailable.
 
----
-
 # Info
 
 ## ngx-apple-maps ❤️
