@@ -569,6 +569,11 @@ class AppleMapkitAnnotationComponent {
         return this._longitude;
     }
     constructor(appleMapsService, differs, ref, renderer, parent) {
+        // TODO: Funktion für Marker auch in unselectieren zustand bearbeiten zu können über ng-content
+        //       - https://stackoverflow.com/questions/74630351/content-project-elements-through-directive-and-ng-template-in-angular-13
+        //       - https://medium.com/@zeeshankhan8838/content-projection-through-dynamic-components-in-angular-e6465c728e20
+        //       - https://stackoverflow.com/questions/71590105/angular-component-ng-content-passing-template-with-dynamic-output-placeholders
+        //       - https://www.google.com/search?q=Angular+component+ng-content+passing+template+with+dynamic+output+placeholders
         this.appleMapsService = appleMapsService;
         this.differs = differs;
         this.ref = ref;
