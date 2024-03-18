@@ -1139,11 +1139,11 @@ export declare namespace MapKit {
         /**
          * The image to display in the marker balloon.
          */
-        glyphImage: object | null;
+        glyphImage: any | null;
         /**
          * The image to display in the balloon when the marker is selected.
          */
-        selectedGlyphImage: object;
+        selectedGlyphImage: any;
     }
     /**
      * An object containing the options that initialize a marker annotation.
@@ -1172,7 +1172,7 @@ export declare namespace MapKit {
         /**
          * The image to display in the balloon when the marker is selected.
          */
-        selectedGlyphImage?: object | undefined;
+        selectedGlyphImage?: any | undefined;
         /**
          * A value that determines the behavior of the subtitle's visibility.
          */
@@ -1198,7 +1198,7 @@ export declare namespace MapKit {
         /**
          * Custom data to associate with this overlay.
          */
-        data: object;
+        data: any;
         /**
          * A Boolean value that determines if an overlay is visible.
          */
@@ -1283,7 +1283,7 @@ export declare namespace MapKit {
         /**
          * Custom data to associate with this overlay.
          */
-        data?: object | undefined;
+        data?: any | undefined;
         /**
          * A Boolean value that determines if an overlay is visible.
          */
@@ -1371,7 +1371,7 @@ export declare namespace MapKit {
         /**
          * Custom data used to populate the URL template.
          */
-        data: object;
+        data: any;
     }
     /**
      * Attributes used when initializing a tile overlay, including minimum and
@@ -1393,9 +1393,9 @@ export declare namespace MapKit {
         /**
          * Custom data used to populate the URL template.
          */
-        data?: object | undefined;
+        data?: any | undefined;
     }
-    type URLTemplateCallback = (x: number, y: number, z: number, scale: number, data: object) => string;
+    type URLTemplateCallback = (x: number, y: number, z: number, scale: number, data: any) => string;
     /**
      * A set of observable attributes for overlays, including color and opacity of
      * stroke and fill, and line styles.
@@ -1524,7 +1524,7 @@ export declare namespace MapKit {
          *
          * @param options A JavaScript object with unit distance values as keys with matched CSS colors.
          */
-        constructor(options?: object);
+        constructor(options?: any);
         /**
          * Adds a color transition point to the gradient.
          *
@@ -2597,7 +2597,7 @@ export declare namespace MapKit {
          * features with null geometry.
          * @param geoJSON The original GeoJSON object for this feature.
          */
-        itemForFeature?(item: Annotation | Overlay | ItemCollection | null, geoJSON: object): Annotation | Overlay | Array<Annotation | Overlay>;
+        itemForFeature?(item: Annotation | Overlay | ItemCollection | null, geoJSON: any): Annotation | Overlay | Array<Annotation | Overlay>;
         /**
          * Overrides a feature collection.
          *
@@ -2606,14 +2606,14 @@ export declare namespace MapKit {
          * @param geoJSON The original GeoJSON object for this FeatureCollection.
          * This will contain an array of feature types.
          */
-        itemForFeatureCollection?(itemCollection: ItemCollection, geoJSON: object): Annotation | Overlay | Array<Annotation | Overlay>;
+        itemForFeatureCollection?(itemCollection: ItemCollection, geoJSON: any): Annotation | Overlay | Array<Annotation | Overlay>;
         /**
          * Overrides a line string.
          *
          * @param overlay A PolylineOverlay object.
          * @param geoJSON original GeoJSON object for this LineString object.
          */
-        itemForLineString?(overlay: PolylineOverlay, geoJSON: object): Annotation | Overlay | Array<Annotation | Overlay>;
+        itemForLineString?(overlay: PolylineOverlay, geoJSON: any): Annotation | Overlay | Array<Annotation | Overlay>;
         /**
          * Overrides a multiline string.
          *
@@ -2621,7 +2621,7 @@ export declare namespace MapKit {
          * @param geoJSON The original GeoJSON object for this MultiLineString. This
          * will contain an array of geometries.
          */
-        itemForMultiLineString?(itemCollection: ItemCollection, geoJSON: object): Annotation | Overlay | Array<Annotation | Overlay>;
+        itemForMultiLineString?(itemCollection: ItemCollection, geoJSON: any): Annotation | Overlay | Array<Annotation | Overlay>;
         /**
          * Overrides a point.
          *
@@ -2630,7 +2630,7 @@ export declare namespace MapKit {
          * @param geoJSON The original GeoJSON object for this Point. This object could
          * be a simple Point or a Feature with the Point geometry type.
          */
-        itemForPoint?(coordinate: Coordinate, geoJSON: object): Array<Annotation | Overlay>;
+        itemForPoint?(coordinate: Coordinate, geoJSON: any): Array<Annotation | Overlay>;
         /**
          * Overrides a multipoint object.
          *
@@ -2638,7 +2638,7 @@ export declare namespace MapKit {
          * @param geoJSON The original GeoJSON object for this MultiPoint. This will
          * contain an array of geometries.
          */
-        itemForMultiPoint?(itemCollection: ItemCollection, geoJSON: object): Annotation | Overlay | Array<Annotation | Overlay>;
+        itemForMultiPoint?(itemCollection: ItemCollection, geoJSON: any): Annotation | Overlay | Array<Annotation | Overlay>;
         /**
          * Overrides a polygon.
          *
@@ -2646,7 +2646,7 @@ export declare namespace MapKit {
          * or you could completely replace the overlay.
          * @param geoJSON The original GeoJSON object for this polygon.
          */
-        itemForPolygon?(overlay: PolygonOverlay, geoJSON: object): Annotation | Overlay | Array<Annotation | Overlay>;
+        itemForPolygon?(overlay: PolygonOverlay, geoJSON: any): Annotation | Overlay | Array<Annotation | Overlay>;
         /**
          * Overrides a multipolygon.
          *
@@ -2654,28 +2654,28 @@ export declare namespace MapKit {
          * @param geoJSON The original GeoJSON object for this MultiPolygon. This
          * will contain an array of geometries.
          */
-        itemForMultiPolygon?(itemCollection: ItemCollection, geoJSON: object): Annotation | Overlay | Array<Annotation | Overlay>;
+        itemForMultiPolygon?(itemCollection: ItemCollection, geoJSON: any): Annotation | Overlay | Array<Annotation | Overlay>;
         /**
          * Overrides the style of overlays.
          *
          * @param overlay The overlay to style.
          * @param geoJSON The original GeoJSON for this feature or geometry object.
          */
-        styleForOverlay?(overlay: Overlay, geoJSON: object): Style;
+        styleForOverlay?(overlay: Overlay, geoJSON: any): Style;
         /**
          * Completes the GeoJSON import.
          *
          * @param result The mapped item collection.
          * @param geoJSON The original parsed GeoJSON object.
          */
-        geoJSONDidComplete?(result: ItemCollection, geoJSON: object): void;
+        geoJSONDidComplete?(result: ItemCollection, geoJSON: any): void;
         /**
          * Indicates the GeoJSON import failed.
          *
          * @param error An Error instance related to the last blocking error.
          * @param geoJSON The original parsed GeoJSON object.
          */
-        geoJSONDidError?(error: Error, geoJSON: object): void;
+        geoJSONDidError?(error: Error, geoJSON: any): void;
     }
     /**
      * A tree structure containing annotations, overlays, and nested item
@@ -2685,7 +2685,7 @@ export declare namespace MapKit {
         /**
          * The raw GeoJSON data.
          */
-        data: object;
+        data: any;
         /**
          * A flattened array of items that include annotations or overlays.
          */
