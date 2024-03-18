@@ -1,6 +1,6 @@
 {
   "name": "ngx-apple-mapkit",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "This is a renewed variant of the ngx-apple-maps. This runs on Angular 16 and Ivy. I personally use the library and it is therefore regularly maintained.\n",
   "keywords": [
     "apple",

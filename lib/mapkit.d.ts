@@ -539,6 +539,7 @@ export declare namespace MapKit {
     const maps: Map[];
     interface EventBase<T> {
         type: string;
+        pointOnPage?: DOMPoint | null;
         target: T;
     }
     interface MapDisplayEvents<T> {
