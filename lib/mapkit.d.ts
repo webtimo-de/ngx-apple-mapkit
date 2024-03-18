@@ -1199,6 +1199,7 @@ export declare namespace MapKit {
          * Custom data to associate with this overlay.
          */
         data: any;
+        _impl: any;
         /**
          * A Boolean value that determines if an overlay is visible.
          */
