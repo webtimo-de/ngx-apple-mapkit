@@ -109,6 +109,10 @@ export declare namespace MapKit {
          * The map's DOM element.
          */
         readonly element: Element;
+        _impl: {
+            [s: string]: any;
+            zoomLevel: number;
+        };
         /**
          * A Boolean value that indicates if map rotation is available.
          */
