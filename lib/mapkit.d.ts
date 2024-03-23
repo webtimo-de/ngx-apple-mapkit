@@ -1702,6 +1702,42 @@ export declare namespace MapKit {
          * Common names for the local area or neighborhood of the place.
          */
         dependentLocalities?: string[] | undefined;
+        /**
+         * The Apple Place ID
+         */
+        muid?: string | undefined;
+        /**
+         * URL of Place to maps.apple.com
+         */
+        _wpURL?: string | undefined;
+        /**
+         * Style Attributes
+         */
+        _styleAttributes?: string | undefined;
+        /**
+         * Timezone
+         */
+        timezone?: string | undefined;
+        /**
+         * Timezone: seconds from GMT
+         */
+        timezoneSecondsFromGmt?: number | undefined;
+        /**
+         * Provider Id
+         */
+        _providerId?: string | undefined;
+        /**
+         * Provider Item Id
+         */
+        _providerItemId?: string | undefined;
+        /**
+         * Telephone number
+         */
+        telephone?: string | undefined;
+        /**
+         * URLs
+         */
+        urls?: string[] | undefined;
     }
     /**
      * An object that retrieves map-based search results for a user-entered query.
