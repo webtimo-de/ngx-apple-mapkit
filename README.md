@@ -223,7 +223,7 @@ class NgxAppleMapkitComponent {
 
     onLoaded(e: MapKitLoaded) {
         const map: MapKit.Map = e.map;
-        (map as any)._impl.zoomLevel = 4; // <-- Zoom Level
+        map._impl.zoomLevel = 4; // <-- Zoom Level
     }
 
     // ...
@@ -309,98 +309,51 @@ class NgxAppleMapkitComponent {
 
 ## Service
 
-> 🛈 I will make these `Service` functions capable of TypeScript in the coming updates. This is another old circumstance from the predecessor `ngx-apple-maps`
+For using api without map you should initialize API using **AppleMapsService**:
 
-For using api without map you should initialize API using **AppleMapsService**
-
-1. Init mapkit js using `AppleMapsService`
+Init mapkit js using `AppleMapsService`
 
 ```typescript
-this.appleMapsService.init({
+this.appleMapsService.initialize({
     JWT: 'YOUR_TOKEN'
 });
 ```
 
-#### Search and autocomplete
-
+### Search / Autocomplete
 Import `AppleMapsSearchService`
 
-Methods:
-
-#### 1. Search / Autocomplete
-
-##### 1.1 Init search
+#### Initialize
 
 ```typescript
-this.appleMapsSearchService.initSearch(options);
+this.appleMapsSearchService.initialize(options);
 ```
 
-##### Using search
+#### Using Search
 
 ```typescript
-this.appleMapsSearchService.search(
-    query, // search query
-    (err, data) => {
-    }, // callback
-    options // SearchInterface
-);
+const result: MapKit.SearchResponse = await this.appleMapsSearchService.searchPromised(query, options);
 ```
 
-##### Using autocomplete
+#### Using Autocomplete
 
 ```typescript
-this.appleMapsSearchService.autocomplete(
-    query, // search query
-    (err, data) => {
-    }, // callback
-    options // SearchInterface
-);
+const result: MapKit.SearchAutocompleteResponse = await this.appleMapsSearchService.autocompletePromised(query, options);
 ```
 
-##### SearchInterface
-
-```typescript
-const options = {  // optional
-    getsUserLocation: false, // search near user
-    coordinate: {
-        latitude: number,
-        longitude: number,
-    },
-    language: 'en', // default browser language
-    region: {
-        center: {
-            latitude: number,
-            longitude: number,
-        },
-        span: {
-            from: number,
-            to: number,
-        }
-    }
-};
-```
-
-#### 2. User location
-
-```typescript
-getUserLocation(timeout)
-```
-
-Return `Promise`<br>
-`timeout` - `Promise.reject()` timeout, default `5000`
-If `timeout` is 0 reject doesn't call
-
-#### Geocoder
+### Geocoder
 
 Import `AppleMapsGeocoderService`
 
-Methods:
-`reverseLookup(lat, lon, callback, options: GeocoderReverseLookupOptionsInterface)`
+#### Initialize
 
 ```typescript
-interface GeocoderReverseLookupOptionsInterface {
-    language: string;
-}
+this.appleMapsGeocoderService.initialize(options);
+```
+
+#### Using Reverse Lookup
+
+```typescript
+const result: MapKit.GeocoderResponse = await this.appleMapsGeocoderService.reverseLookupPromised(latitude, longitude, options);
 ```
 
 ## Angular Universal
@@ -423,3 +376,9 @@ You can find more information in the original project:
 
 As of version **ngx-apple-mapkit@0.0.24**, more significant changes have been made.
 This has an impact, please pay attention when replacing or updating!
+
+## TODO 🎉
+
+- Standalone Angular Component
+- Use MapKit Namespace overall
+- Remove functions in `MapKitLoaded` and directly use mapkit

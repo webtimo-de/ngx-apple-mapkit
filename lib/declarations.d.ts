@@ -162,16 +162,3 @@ export declare interface AnnotationConstructorOptionsInterface {
     glyphImage?: string;
     selectedGlyphImage?: string;
 }
-export declare interface SearchInterface {
-    language?: string;
-    getUserLocation?: boolean;
-    coordinate?: CoordinatesInterface;
-    region?: RegionInterface;
-}
-export declare interface GeocoderConstructorOptionsInterface {
-    language?: string;
-    getsUserLocation?: boolean;
-}
-export declare interface GeocoderReverseLookupOptionsInterface {
-    language?: string;
-}

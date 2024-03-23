@@ -21,7 +21,11 @@ export declare class AppleMapsService {
     center: any;
     constructor(platformId: Object);
     private static settingsLoadedTransform;
+    /**
+     * @deprecated use initialize
+     */
     init(options: MapKitInitOptions, settings?: MapConstructorOptions, cb?: (data: MapKitLoaded) => void): void;
+    initialize(options: MapKitInitOptions, settings?: MapConstructorOptions, cb?: (data: MapKitLoaded) => void): void;
     private createMaps;
     createMap(element: HTMLElement): void;
     private addMapInitOptionsListeners;

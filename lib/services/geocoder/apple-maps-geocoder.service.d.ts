@@ -1,10 +1,15 @@
-import { GeocoderConstructorOptionsInterface, GeocoderReverseLookupOptionsInterface } from '../../declarations';
+import { MapKit } from "../../mapkit";
 import * as i0 from "@angular/core";
 export declare class AppleMapsGeocoderService {
-    private geocoder;
+    private geocoderInstance;
     constructor();
-    initGeocoder(options?: GeocoderConstructorOptionsInterface): void;
-    reverseLookup(lat: number, lon: number, callback: (err: any, data?: any) => any, options?: GeocoderReverseLookupOptionsInterface): void;
+    /**
+     * @deprecated use initialize
+     */
+    initGeocoder(options?: any): void;
+    initialize(options?: MapKit.GeocoderConstructorOptions): MapKit.Geocoder;
+    reverseLookup(latitude: number, longitude: number, callback: (err: Error, data?: MapKit.GeocoderResponse) => void, options?: MapKit.GeocoderLookupOptions): number;
+    reverseLookupPromised(latitude: number, longitude: number, options?: MapKit.GeocoderLookupOptions): Promise<MapKit.GeocoderResponse>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AppleMapsGeocoderService, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<AppleMapsGeocoderService>;
 }

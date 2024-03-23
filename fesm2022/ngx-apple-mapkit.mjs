@@ -40,7 +40,14 @@ class AppleMapsService {
         }
         return newSettings;
     }
+    /**
+     * @deprecated use initialize
+     */
     init(options, settings = {}, cb = (data) => {
+    }) {
+        return this.initialize(options, settings, cb);
+    }
+    initialize(options, settings = {}, cb = (data) => {
     }) {
         if (!options.JWT || !this.isBrowser) {
             return;
@@ -378,21 +385,36 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.1.3", ngImpor
 class AppleMapsGeocoderService {
     constructor() {
     }
+    /**
+     * @deprecated use initialize
+     */
     initGeocoder(options = {}) {
-        this.geocoder = new window.mapkit.Geocoder(options);
+        this.geocoderInstance = new window.mapkit.Geocoder(options);
     }
-    reverseLookup(lat, lon, callback, options = {}) {
-        if (!this.geocoder) {
-            this.initGeocoder();
+    initialize(options = {}) {
+        this.geocoderInstance = new window.mapkit.Geocoder(options);
+        return this.geocoderInstance;
+    }
+    reverseLookup(latitude, longitude, callback, options = {}) {
+        if (!this.geocoderInstance) {
+            throw new Error(`Geocoder or API don't initialized`);
         }
-        this.geocoder.reverseLookup(new window.mapkit.Coordinate(lat, lon), (err, result) => {
-            if (err) {
-                callback(err, null);
-            }
-            else {
-                callback(null, result);
-            }
-        }, options);
+        return this.geocoderInstance.reverseLookup(new window.mapkit.Coordinate(latitude, longitude), callback, options);
+    }
+    reverseLookupPromised(latitude, longitude, options = {}) {
+        if (!this.geocoderInstance) {
+            return Promise.reject(`Geocoder or API don't initialized`);
+        }
+        return new Promise((resolve, reject) => {
+            this.geocoderInstance.reverseLookup(new window.mapkit.Coordinate(latitude, longitude), (err, result) => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    resolve(result);
+                }
+            }, options);
+        });
     }
     static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.1.3", ngImport: i0, type: AppleMapsGeocoderService, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
     static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.1.3", ngImport: i0, type: AppleMapsGeocoderService, providedIn: 'root' }); }
@@ -405,32 +427,57 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.1.3", ngImpor
 class AppleMapsSearchService {
     constructor() {
     }
+    /**
+     * @deprecated use initialize
+     */
     initSearch(options = {}) {
-        this.searchObject = new window.mapkit.Search(options);
+        this.searchInstance = new window.mapkit.Search(options);
+    }
+    initialize(options = {}) {
+        this.searchInstance = new window.mapkit.Search(options);
+        return this.searchInstance;
     }
     search(query, callback, options) {
-        if (!this.searchObject) {
-            throw new Error('Search or API don\'t initialized');
+        if (!this.searchInstance) {
+            throw new Error(`Search or API don't initialized`);
         }
-        this.searchObject.search(query, (err, data) => {
-            if (err) {
-                callback(err);
-                return;
-            }
-            callback(err, data);
-        }, options);
+        return this.searchInstance.search(query, callback, options);
     }
     autocomplete(query, callback, options) {
-        if (!this.searchObject) {
-            throw new Error('Search don\'t initialized');
+        if (!this.searchInstance) {
+            throw new Error(`Search or API don't initialized`);
         }
-        this.searchObject.autocomplete(query, (err, data) => {
-            if (err) {
-                callback(err);
-                return;
-            }
-            callback(err, data);
-        }, options);
+        return this.searchInstance.autocomplete(query, callback, options);
+    }
+    searchPromised(query, options) {
+        if (!this.searchInstance) {
+            return Promise.reject(`Search or API don't initialized`);
+        }
+        return new Promise((resolve, reject) => {
+            this.searchInstance.search(query, (error, data) => {
+                if (error) {
+                    reject(error);
+                }
+                else {
+                    resolve(data);
+                }
+            }, options);
+        });
+    }
+    autocompletePromised(query, options) {
+        if (!this.searchInstance) {
+            return Promise.reject(`Search or API don't initialized`);
+        }
+        return new Promise((resolve, reject) => {
+            this.searchInstance.autocomplete(query, (error, data) => {
+                if (error) {
+                    reject(error);
+                }
+                else {
+                    resolve(data);
+                }
+            }, options);
+        });
     }
     static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.1.3", ngImport: i0, type: AppleMapsSearchService, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
     static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.1.3", ngImport: i0, type: AppleMapsSearchService, providedIn: 'root' }); }

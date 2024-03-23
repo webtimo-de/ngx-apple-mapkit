@@ -1760,7 +1760,7 @@ export declare namespace MapKit {
          * @returns a request ID (integer) that can be passed to cancel to abort a
          * pending request.
          */
-        search<Q extends string | SearchAutocompleteResult>(query: Q, callback: SearchDelegate | SearchCallback<Q>, options?: SearchOptions): number;
+        search(query: string, callback: SearchDelegate | SearchCallback, options?: SearchOptions): number;
         /**
          * Retrieves a list of autocomplete results for the specified search query.
          *
@@ -1862,23 +1862,8 @@ export declare namespace MapKit {
          */
         limitToCountries?: string | undefined;
     }
-    type SearchCallback<Q> = (error: Error | null, data: {
-        /**
-         * The query corresponding to the results  The query corresponding to the
-         * results, if a SearchAutocompleteResult was not used to perform the search.
-         */
-        query: Q extends SearchAutocompleteResult ? undefined : string;
-        /**
-         * A region that encloses the search results. This property is not present
-         * if there are no results.
-         */
-        displayRegion?: CoordinateRegion | undefined;
-        /**
-         * An array of Place objects. The place array is empty if there is no match.
-         */
-        places: Place[];
-    }) => void;
     type AutocompleteSearchCallback = (error: Error | null, data: SearchAutocompleteResponse) => void;
+    type SearchCallback = (error: Error | null, data: SearchResponse) => void;
     /**
      * An object or callback function called when performing a search or autocomplete
      * request.
